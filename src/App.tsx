@@ -3,38 +3,27 @@ import "slick-carousel/slick/slick-theme.css";
 
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import Title from "antd/lib/typography/Title";
-import image1 from './analytics.svg';
-import image2 from './artificial-intelligence.svg';
 import image3 from './ai.svg';
 import dongHangLogo from './dh.jpg';
-import winnerImg from './winner.jpg';
 import phoneUseImg from './phone-use.jpg';
-import iphoneBackImg from './iphone-back.png';
 // @ts-ignore
-import DisplaySection from "./DisplaySection";
-import StrongCopy from "./StrongCopy";
 import styled from 'styled-components';
 import FixedHeader from "./FixedHeader";
 import DisplayGroup from "./DisplayGroup";
 import useScrollPosition from "./useScrollPosition";
 import PhoneImage from "./PhoneImage";
-import ZoomImage from "./ZoomImage";
 import Counter from "./Counter";
 import MyCard from "./MyCard";
-import {Card} from "antd";
+import SlidePart from "./SlidePart";
+
 
 const App: React.FC = () => {
 
-  const [count, setCount] = useState(892);
   const [toggleButton, setToggleButton] = useState(false);
 
   let position = useScrollPosition();
 
   useEffect(() => {
-    if (820 < position && position < 870) {
-      grainCountStart();
-    }
 
     if (position < 500) {
       setToggleButton(false);
@@ -44,19 +33,6 @@ const App: React.FC = () => {
 
   }, [position]);
 
-
-  async function grainCountStart() {
-    setCount(400);
-    await wait(10);
-    for (let i = 0; i <= 892; i++) {
-      setCount(i);
-      await wait(1);
-    }
-  }
-
-  async function wait(ms: number) {
-    await new Promise(resolve => setTimeout(resolve, ms));
-  }
 
   return (
     <>
@@ -71,6 +47,7 @@ const App: React.FC = () => {
             <FirstCopySmall>고민은 줄이고, 확률은 높이고!</FirstCopySmall>
           </FirstArea>
 
+
           <DisplayGroup
             key={'hddcsfs'}
             strongCopy={'AI 비서, 무엇을 도와주나요?'}
@@ -79,49 +56,64 @@ const App: React.FC = () => {
           <DisplayGroup
             reversed={true}
             key={'hdsdsas'}
-            strongCopy={<>빈도분석부터, <br/> 제외수 고정수 선정도.</>}
-            imgNode={<PhoneImage key={'k'} />}
+            strongCopy={<>초당 <Counter inital={199000} max={200000} /> 번의 <br/> 연산을 통한 분석.</>}
+            imgNode={<PhoneImage key={'k'}/>}
             desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
           />
+
           <DisplayGroup
             key={'hfsdfvdssa'}
-            strongCopy={<><div><Counter inital={500} max={893}/> 회의</div> 동행복권 이력을 분석합니다.</>}
+            strongCopy={<>
+              <div><Counter inital={500} max={893}/> 회의</div>
+              동행복권 이력을 분석합니다.</>}
+            imgSrc={dongHangLogo}
+            desc={'로또번호 선택, AI 비서의 도움을 받아보세요'}
+          />
+
+          <SlidePart title={'여긴 뭘 보여줄까요?'}/>
+
+
+          <DisplayGroup
+            key={'hfsdfvdssa'}
+            strongCopy={<>
+              <div><Counter inital={500} max={893}/> 회의</div>
+              동행복권 이력을 분석합니다.</>}
             imgSrc={dongHangLogo}
             desc={'로또번호 선택, AI 비서의 도움을 받아보세요'}
           />
           <DisplayGroup
             reversed
-            key={'hdadsas'}
+            key={'hdadsagfs'}
             strongCopy={'Torch Algorithm 과 함께합니다.'}
-            imgNode={<PhoneImage key={'e'} />}
+            imgNode={<PhoneImage key={'e'}/>}
             desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
           />
           <DisplayGroup
             key={'hdsfsdfsdds'}
             strongCopy={<>빈도분석부터, <br/> 제외수 고정수 선정도.</>}
-            imgNode={<PhoneImage key={'k'} />}
+            imgNode={<PhoneImage key={'k'}/>}
             desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
           />
 
           <DisplayGroup
             key={'hdsdsds'}
             reversed
-            strongCopy={<>사전신청자  분들을 위한 특권 <br/> 🎉 </>}
+            strongCopy={<>사전신청자 분들을 위한 특권 <br/> 🎉 </>}
             desc={<>
-              <MyCard title={'Plan A'} />
+              <MyCard title={'Plan A 🎟 3회 무료권'}/>
 
               <div>사전 신청자분들 한정 특권을 드립니다.</div>
             </>}
           />
 
           <DisplayGroup
-            key={'hdsds'}
+            key={'hdsdsdaa'}
             strongCopy={<>다양한 멤버쉽, <br/> deepTery의 무한한 가능성.</>}
             desc={<>
 
               <div style={{marginTop: 25}}>강력한 기술력과 함께 <br/> 무한한 잠재력을 펼쳐보세요.</div>
 
-              <MyCard title={'Plan A'} />
+              <MyCard title={'Plan A'}/>
               <MyCard title={'Plan B'}/>
               <MyCard title={'Plan C'}/>
             </>}
@@ -132,10 +124,12 @@ const App: React.FC = () => {
             reversed
             desc={<>
               <div style={{}}>개인정보 보호 약관</div>
-              <div style={{fontSize: 12, marginTop: 24, marginBottom : 36}}>서비스 출시 알림 목적 외에 고객님의 개인정보는 일체 이용되지 않습니다.</div>
+              <div style={{fontSize: 12, marginTop: 24, marginBottom: 36}}>서비스 출시 알림 목적 외에 고객님의 개인정보는 일체 이용되지 않습니다.
+              </div>
 
               <div style={{}}>서비스 이용 고시</div>
-              <div style={{fontSize: 12, marginTop: 24, marginBottom : 24}}>본 서비스는 이용자의 로또 번호 선택을 도울 뿐, 당첨을 보장하지 않습니다.</div>
+              <div style={{fontSize: 12, marginTop: 24, marginBottom: 24}}>본 서비스는 이용자의 로또 번호 선택을 도울 뿐, 당첨을 보장하지 않습니다.
+              </div>
             </>}
           />
 
@@ -231,5 +225,8 @@ z-index:3;
 -webkit-font-smoothing:antialiased;
 -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 `;
+
+
+
 
 export default App;

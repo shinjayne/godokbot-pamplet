@@ -6,7 +6,6 @@ const useScrollPosition = (): number => {
 
   window.onscroll = () => {
     if (window.scrollY - position > 50 || position - window.scrollY > 50) {
-      console.log(window.scrollY);
       setPosition(window.scrollY);
     }
   };

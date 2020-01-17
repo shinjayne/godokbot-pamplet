@@ -20,7 +20,6 @@ const PhoneImage : React.FC<IProps> = () => {
     let diff = Math.abs(window.scrollY - current);
     if (diff <= 120 && diff >= 0) {
       setZoomed(true);
-      console.log('hit');
     }
     else {
       setZoomed(false);

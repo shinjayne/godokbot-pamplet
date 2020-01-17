@@ -29,6 +29,7 @@ const Con = styled.div`
 
   margin: 20px 0 20px 0;
   background-color: white;
+  color :rgb(69, 79, 93);
   width: 280px;
   min-height: 200px;
   border-radius: 6px;
