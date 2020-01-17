@@ -5,7 +5,7 @@ import {Desc} from "./App";
 import ZoomImage from "./ZoomImage";
 
 interface IProps {
-  strongCopy: ReactChild,
+  strongCopy?: ReactChild,
   imgSrc?: string,
   imgNode?: ReactChild,
   desc?: ReactChild,
@@ -19,7 +19,7 @@ const DisplayGroup: React.FC<IProps> = ({strongCopy, imgSrc, imgNode, desc, reve
   return (
     <>
       <DisplaySection reversed={reversed}>
-        <StrongCopy reversed={reversed} text={strongCopy}/>
+        {strongCopy && <StrongCopy reversed={reversed} text={strongCopy}/>}
         {(imgNode || imgSrc) &&
         <div style={{marginTop: 40, marginBottom: 40}}>
           {imgNode}

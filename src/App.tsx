@@ -1,7 +1,12 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Title from "antd/lib/typography/Title";
-import image1 from './machine.png';
+import image1 from './analytics.svg';
+import image2 from './artificial-intelligence.svg';
+import image3 from './ai.svg';
 import dongHangLogo from './dh.jpg';
 import winnerImg from './winner.jpg';
 import phoneUseImg from './phone-use.jpg';
@@ -67,45 +72,73 @@ const App: React.FC = () => {
           </FirstArea>
 
           <DisplayGroup
-            key={'hddsfs'}
+            key={'hddcsfs'}
             strongCopy={'AI 비서, 무엇을 도와주나요?'}
-            imgSrc={image1}
+            imgSrc={image3}
             desc={'고정수 지정 기능과 제외수 지정 등 다양한 커스텀 방식을 제공합니다.'}/>
           <DisplayGroup
             reversed={true}
-            key={'hdsds'}
+            key={'hdsdsas'}
             strongCopy={<>빈도분석부터, <br/> 제외수 고정수 선정도.</>}
             imgNode={<PhoneImage key={'k'} />}
             desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
           />
           <DisplayGroup
-            key={'hdssa'}
+            key={'hfsdfvdssa'}
             strongCopy={<><div><Counter inital={500} max={893}/> 회의</div> 동행복권 이력을 분석합니다.</>}
             imgSrc={dongHangLogo}
             desc={'로또번호 선택, AI 비서의 도움을 받아보세요'}
           />
           <DisplayGroup
             reversed
-            key={'hds'}
+            key={'hdadsas'}
             strongCopy={'Torch Algorithm 과 함께합니다.'}
             imgNode={<PhoneImage key={'e'} />}
             desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
           />
           <DisplayGroup
-            key={'hdsds'}
+            key={'hdsfsdfsdds'}
             strongCopy={<>빈도분석부터, <br/> 제외수 고정수 선정도.</>}
             imgNode={<PhoneImage key={'k'} />}
             desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
           />
+
+          <DisplayGroup
+            key={'hdsdsds'}
+            reversed
+            strongCopy={<>사전신청자  분들을 위한 특권 <br/> 🎉 </>}
+            desc={<>
+              <MyCard title={'Plan A'} />
+
+              <div>사전 신청자분들 한정 특권을 드립니다.</div>
+            </>}
+          />
+
           <DisplayGroup
             key={'hdsds'}
             strongCopy={<>다양한 멤버쉽, <br/> deepTery의 무한한 가능성.</>}
             desc={<>
+
+              <div style={{marginTop: 25}}>강력한 기술력과 함께 <br/> 무한한 잠재력을 펼쳐보세요.</div>
+
               <MyCard title={'Plan A'} />
               <MyCard title={'Plan B'}/>
               <MyCard title={'Plan C'}/>
             </>}
           />
+
+          <DisplayGroup
+            key={'hdsds'}
+            reversed
+            desc={<>
+              <div style={{}}>개인정보 보호 약관</div>
+              <div style={{fontSize: 12, marginTop: 24, marginBottom : 36}}>서비스 출시 알림 목적 외에 고객님의 개인정보는 일체 이용되지 않습니다.</div>
+
+              <div style={{}}>서비스 이용 고시</div>
+              <div style={{fontSize: 12, marginTop: 24, marginBottom : 24}}>본 서비스는 이용자의 로또 번호 선택을 도울 뿐, 당첨을 보장하지 않습니다.</div>
+            </>}
+          />
+
 
         </div>
         <MainActionButton toggled={String(toggleButton)}> 사전 신청 </MainActionButton>
