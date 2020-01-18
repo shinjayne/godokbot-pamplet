@@ -44,7 +44,7 @@ const Con = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 600;
   
   margin-bottom: 20px;

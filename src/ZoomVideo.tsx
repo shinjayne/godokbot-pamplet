@@ -35,7 +35,7 @@ const ZoomVideo: React.FC<IProps> = ({videoSrc}) => {
         transitionDelay: '0s',
         transitionDuration: '0.6s',
         transitionProperty: 'all',
-      }} ref={ref} autoPlay={true} loop muted playsinline poster={demoGif}>
+      }} ref={ref} autoPlay={true} loop muted playsInline poster={demoGif}>
         <source  src={`./videodemo.webm`}  type='video/webm'/>
         <source src={`./videodemo.mp4`}  type='video/mp4'/>
       </video>

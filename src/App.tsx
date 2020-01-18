@@ -109,7 +109,7 @@ const App: React.FC = () => {
           />
 
 
-          <SlidePart title={'deepTery가 드리는 추천'}
+          <SlidePart title={'딥테리의 분석 옵션'}
                      contents={[{
                        title: '회귀 분석',
                        imgSrc: barChart,
