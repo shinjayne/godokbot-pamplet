@@ -1,5 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 
+import resultP from './result-p.png';
+import demoGif from './demo.gif';
+
 interface IProps {
   videoSrc: string | undefined,
 }
@@ -27,12 +30,14 @@ const ZoomVideo: React.FC<IProps> = ({videoSrc}) => {
   return (
     <>
       <video style={{
-        width: zoomed ? '80vw' : 200,
+        // width: zoomed ? '80vw' : 200,
+        width: "80vw",
         transitionDelay: '0s',
         transitionDuration: '0.6s',
         transitionProperty: 'all',
-      }} ref={ref} autoPlay loop muted>
-        <source src={`./videodemo.mp4`} type='video/mp4'/>
+      }} ref={ref} autoPlay={true} loop muted playsinline poster={demoGif}>
+        <source  src={`./videodemo.webm`}  type='video/webm'/>
+        <source src={`./videodemo.mp4`}  type='video/mp4'/>
       </video>
     </>
   );

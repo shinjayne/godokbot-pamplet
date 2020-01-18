@@ -215,7 +215,7 @@ const App: React.FC = () => {
 
 
         </div>
-        <MainActionButton toggled={String(toggleButton)} href={'https://forms.gle/boeozudJpDbWpXNh9'}> 출시
+        <MainActionButton toggled={String(toggleButton)} onClick={()=>{window.open('https://forms.gle/boeozudJpDbWpXNh9')} } href='#'> 출시
           알림 </MainActionButton>
         <img style={{
           position: 'fixed', left: "calc(50% - 15px)",
