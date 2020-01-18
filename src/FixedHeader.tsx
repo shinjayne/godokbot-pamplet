@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Title from "antd/lib/typography/Title";
+import {primaryColor} from "./color";
+import {Icon} from "antd";
 
 interface IProps {
   toggled?: boolean,
@@ -16,7 +18,7 @@ const FixedHeader : React.FC<IProps> = ({toggled = false, title, subTitle}) => {
         position: 'fixed',
         left: 0,
         top: 0,
-        color: toggled ? '' : 'white',
+        color: toggled ? primaryColor : 'white',
         backgroundColor:  toggled ? 'white': 'transparent',
         width: '100%',
 
@@ -24,7 +26,7 @@ const FixedHeader : React.FC<IProps> = ({toggled = false, title, subTitle}) => {
         boxShadow: toggled ? "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" : "",
         padding: 16,
 
-        height: toggled ? 50 : 40,
+        height: toggled ? 60 : 40,
 
         transitionDelay:'0s',
         transitionDuration:'0.35s',
@@ -33,14 +35,18 @@ const FixedHeader : React.FC<IProps> = ({toggled = false, title, subTitle}) => {
       }}>
         <Title level={1} style={{
           fontWeight: 1000,
-          fontSize: toggled ? 30 : 40,
-          margin: 0,
+          fontSize: toggled ? 25 : 30,
+          margin: "0 0 6px 0",
 
+          fontFamily: 'Binggrae-Bold',
+          boxSizing: "border-box",
+          width: "fit-content",
+          // border: toggled ? '' : `3px solid ${toggled ? primaryColor : 'white'}`,
 
           transitionDelay:'0s',
           transitionDuration:'0.35s',
           transitionProperty:'all',
-        }}>{title}</Title>
+        }}> {title}</Title>
         <span style={{fontSize: 14}}>
         {toggled &&  subTitle}
         </span>

@@ -1,12 +1,14 @@
 import React, {ReactChild, ReactChildren, useEffect, useRef, useState} from 'react';
+import {textColor} from "./color";
 
 interface IProps {
   text: ReactChild,
   reversed ? :boolean,
+  power ? :boolean,
 }
 
 
-const StrongCopy: React.FC<IProps> = ({text, reversed=false}) => {
+const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false}) => {
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -27,9 +29,9 @@ const StrongCopy: React.FC<IProps> = ({text, reversed=false}) => {
   return (
 
     <div ref={ref} style={{
-      fontWeight: 700,
-      color: reversed ? 'white' : 'rgb(69, 79, 93)',
-      fontSize: zoomed ? 26 : 22,
+      fontWeight: power ? 800 : 700,
+      color: reversed ? 'white' : textColor,
+      fontSize: power ?  33   :( zoomed ? 26 : 22),
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',

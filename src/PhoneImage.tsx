@@ -2,10 +2,11 @@ import React, {useEffect, useRef, useState} from 'react';
 import iphoneBackImg from "./iphone-back.png";
 
 interface IProps {
+  imgSrc?: string,
 }
 
 
-const PhoneImage : React.FC<IProps> = () => {
+const PhoneImage : React.FC<IProps> = ({imgSrc}) => {
 
   // const position = useScrollPosition();
 
@@ -30,10 +31,10 @@ const PhoneImage : React.FC<IProps> = () => {
   return (
     <>
       <div ref={ref} style={{
-        backgroundImage: `url(${iphoneBackImg})`,
+        backgroundImage: `url(${imgSrc || iphoneBackImg})`,
         backgroundPositionX: '50%' ,
         backgroundSize: 'cover',
-        width: '100vw',
+        width: '80vw',
         height: zoomed ? 300 : 250,
 
         transitionDelay:'0s',

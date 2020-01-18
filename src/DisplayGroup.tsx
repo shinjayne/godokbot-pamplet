@@ -1,4 +1,4 @@
-import React, {ReactChild} from 'react';
+import React, {CSSProperties, ReactChild} from 'react';
 import DisplaySection from "./DisplaySection";
 import StrongCopy from "./StrongCopy";
 import {Desc} from "./App";
@@ -10,18 +10,18 @@ interface IProps {
   imgNode?: ReactChild,
   desc?: ReactChild,
   reversed? : boolean,
-
+  imgContainerStyle?: CSSProperties,
 }
 
 
-const DisplayGroup: React.FC<IProps> = ({strongCopy, imgSrc, imgNode, desc, reversed=false}) => {
+const DisplayGroup: React.FC<IProps> = ({strongCopy, imgSrc, imgNode, desc, reversed=false, imgContainerStyle={}}) => {
 
   return (
     <>
       <DisplaySection reversed={reversed}>
         {strongCopy && <StrongCopy reversed={reversed} text={strongCopy}/>}
         {(imgNode || imgSrc) &&
-        <div style={{marginTop: 40, marginBottom: 40}}>
+        <div style={{marginTop:  40, marginBottom: 40, ...imgContainerStyle}}>
           {imgNode}
           {!imgNode && imgSrc && <ZoomImage imgSrc={imgSrc}/>}
         </div>

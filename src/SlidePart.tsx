@@ -1,33 +1,29 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import Slider from "react-slick";
 import MyCard from "./MyCard";
 import styled from "styled-components";
 import StrongCopy from "./StrongCopy";
+import {primaryColor} from "./color";
+
 
 interface IProps {
   title?: string;
+
+  contents : {title?: ReactNode, imgSrc? : string, body? : ReactNode, key? : number | string}[],
 }
 
 
-const SlidePart : React.FC<IProps> = ({title}) => {
+const SlidePart : React.FC<IProps> = ({title, contents}) => {
 
   return (
     <>
       <SliderContainer>
         {title && <StrongCopy reversed={true} text={title}/>}
-        <Slider arrows={false} autoplay={true} autoplaySpeed={1500} pauseOnHover={true} pauseOnDotsHover pauseOnFocus  infinite dots={true}  variableWidth>
-          <SliderItem>
-            <MyCard title={'Torch Algorithm'}/>
-          </SliderItem>
-          <SliderItem>
-            <MyCard title={'패턴 분석'}/>
-          </SliderItem>
-          <SliderItem>
-            <MyCard title={'Linear Regression 선형 회귀'}/>
-          </SliderItem>
-          <SliderItem>
-            <MyCard title={'고정수 제외수'}/>
-          </SliderItem>
+        <Slider initialSlide={3} arrows={false} autoplay={true} autoplaySpeed={1500}  pauseOnDotsHover pauseOnFocus  infinite dots={true}  variableWidth>
+          {contents.map(content => <SliderItem key={content.key}> <MyCard title={content.title}>
+            {content.imgSrc && <img src={content.imgSrc}  style={{width: 100, marginTop: 20, marginBottom: 40}} />}
+            {content.body}
+          </MyCard> </SliderItem>)}
         </Slider>
       </SliderContainer>
     </>
@@ -36,7 +32,7 @@ const SlidePart : React.FC<IProps> = ({title}) => {
 
 const SliderContainer = styled.div`
   padding: 60px 20px 40px 20px;
-  background-color: rgb(52, 58, 66);
+  background-color: ${primaryColor};
   margin-bottom: 70px;
 `;
 
