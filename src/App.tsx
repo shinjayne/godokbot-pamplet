@@ -74,7 +74,7 @@ const App: React.FC = () => {
         <FixedHeader toggled={toggleButton} title={'deepTery'} subTitle={'당신의 행복을 함께 꿈꾸는 즐거운 로또.'}/>
 
         <div>
-          <FirstArea style={{backgroundImage: `url(${phoneUseImg})`}}>
+          <FirstArea style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5) ), url(${phoneUseImg})`}}>
             <FirstCopySmall> 운명을 바꿀 수 있는</FirstCopySmall>
             <FirstCopySmall> 한 번의 선택 </FirstCopySmall>
             <FirstCopy>내 운명은 내가 결정한다</FirstCopy>
