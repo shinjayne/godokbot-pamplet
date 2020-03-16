@@ -21,7 +21,7 @@ const DisplayGroup: React.FC<IProps> = ({strongCopy, imgSrc, imgNode, desc, reve
       <DisplaySection reversed={reversed}>
         {strongCopy && <StrongCopy reversed={reversed} text={strongCopy}/>}
         {(imgNode || imgSrc) &&
-        <div style={{marginTop:  40, marginBottom: 40, ...imgContainerStyle}}>
+        <div style={{marginTop:  40, marginBottom: 40, width: '100%', ...imgContainerStyle}}>
           {imgNode}
           {!imgNode && imgSrc && <ZoomImage imgSrc={imgSrc}/>}
         </div>

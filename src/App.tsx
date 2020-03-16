@@ -89,7 +89,7 @@ const App: React.FC = () => {
             key={'hddcsfs'}
             strongCopy={<>여러분의 행운 가이드 <br/> deepTery는</>}
             imgContainerStyle={{margin: 0}}
-            imgNode={<img src={lottoGif} style={{width: '100vw'}}/>}
+            imgNode={<img src={lottoGif} style={{width: '100%'}}/>}
             desc={<> 복권 번호를 고르는 과정에서 <br/> 최선의 선택을 할 수 있도록 돕습니다. </>}/>
 
           <DisplayGroup
@@ -109,7 +109,7 @@ const App: React.FC = () => {
           />
 
 
-          <SlidePart title={'딥테리의 분석 옵션'}
+          <SlidePart title={'deepTery의 분석 옵션'}
                      contents={[{
                        title: '회귀 분석',
                        imgSrc: barChart,
@@ -196,6 +196,7 @@ const App: React.FC = () => {
               운명이 바뀌었습니다.</>}
             imgSrc={dongHangLogo}
             desc={'지금 바로 "출시 알림" 을 신청해보세요.'}
+            imgContainerStyle={{display: 'flex', justifyContent: 'center'}}
           />
 
 
@@ -235,6 +236,7 @@ const Root = styled.div`
   overscroll-behavior-x: none;
   word-spacing: initial;
   line-height: 1.4;
+  max-width: 420px;
 `;
 
 

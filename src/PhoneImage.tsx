@@ -34,7 +34,7 @@ const PhoneImage : React.FC<IProps> = ({imgSrc}) => {
         backgroundImage: `url(${imgSrc || iphoneBackImg})`,
         backgroundPositionX: '50%' ,
         backgroundSize: 'cover',
-        width: '80vw',
+        width: '100%',
         height: zoomed ? 300 : 250,
 
         transitionDelay:'0s',

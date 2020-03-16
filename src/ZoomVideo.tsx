@@ -31,7 +31,7 @@ const ZoomVideo: React.FC<IProps> = ({videoSrc}) => {
     <>
       <video style={{
         // width: zoomed ? '80vw' : 200,
-        width: "80vw",
+        width: "100%",
         transitionDelay: '0s',
         transitionDuration: '0.6s',
         transitionProperty: 'all',
