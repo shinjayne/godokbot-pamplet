@@ -71,13 +71,15 @@ const App: React.FC = () => {
 
 
       <Root>
-        <FixedHeader toggled={toggleButton} title={'deepTery'} subTitle={'당신의 행복을 함께 꿈꾸는 즐거운 로또.'}/>
+        <FixedHeader toggled={toggleButton} title={'고독한 취준봇'} subTitle={'내게 필요한 취준 정보만 쏙쏙'}/>
 
         <div>
           <FirstArea style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5) ), url(${phoneUseImg})`}}>
-            <FirstCopySmall> 운명을 바꿀 수 있는</FirstCopySmall>
-            <FirstCopySmall> 한 번의 선택 </FirstCopySmall>
-            <FirstCopy>내 운명은 내가 결정한다</FirstCopy>
+            <FirstCopySmall> 자소서 꿀팁, 기업 최신이슈 등   </FirstCopySmall>
+            <FirstCopySmall> 고퀄리티 취준 컨텐츠가 매일 2개씩 쏙쏙. </FirstCopySmall>
+            <FirstCopySmall>내게 딱 맞는 취준 도우미</FirstCopySmall>
+            <FirstCopy style={{fontFamily: 'Jalnan'}}>고독한 취준봇 🤖 </FirstCopy>
+
           </FirstArea>
 
 
@@ -216,8 +218,7 @@ const App: React.FC = () => {
 
 
         </div>
-        <MainActionButton toggled={String(toggleButton)} onClick={()=>{window.open('https://forms.gle/boeozudJpDbWpXNh9')} } href='#'> 출시
-          알림 </MainActionButton>
+        <MainActionButton toggled={String(toggleButton)} onClick={()=>{window.open('https://forms.gle/boeozudJpDbWpXNh9')} } href='#'> 참여 코드 안내받기 </MainActionButton>
         <img style={{
           position: 'fixed', left: "calc(50% - 15px)",
           bottom: 13,
@@ -236,7 +237,12 @@ const Root = styled.div`
   overscroll-behavior-x: none;
   word-spacing: initial;
   line-height: 1.4;
+  
+  width: 100vw;
+  @media screen and (min-width: 420px) {
   max-width: 420px;
+  }
+  
 `;
 
 
@@ -274,6 +280,7 @@ const FirstCopySmall = styled.div`
   justify-content: flex-end;
   color: white;
   font-weight: 700;
+  margin-top: 8px;
 `;
 
 
@@ -300,7 +307,7 @@ box-shadow:rgba(0, 0, 0, 0.2) 0px 0px 15px 0px;
 box-sizing:border-box;
 color: white;
 cursor : pointer;
-font-family:"Binggrae-Bold", Sans-serif;
+font-family:"Jalnan", Sans-serif;
 font-size:18px;
 font-weight:700;
 height: 58px;

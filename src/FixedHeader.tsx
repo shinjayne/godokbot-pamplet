@@ -20,7 +20,7 @@ const FixedHeader: React.FC<IProps> = ({toggled = false, title, subTitle}) => {
           fontSize: toggled ? 25 : 30,
           margin: "0 0 6px 0",
 
-          fontFamily: 'Binggrae-Bold',
+          fontFamily: 'Jalnan',
           boxSizing: "border-box",
           width: "fit-content",
           // border: toggled ? '' : `3px solid ${toggled ? primaryColor : 'white'}`,
