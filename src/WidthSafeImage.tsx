@@ -3,10 +3,11 @@ import iphoneBackImg from "./iphone-back.png";
 
 interface IProps {
   imgSrc?: string,
+  useZoom?: boolean,
 }
 
 
-const PhoneImage : React.FC<IProps> = ({imgSrc}) => {
+const WidthSafeImage : React.FC<IProps> = ({imgSrc, useZoom=true}) => {
 
   // const position = useScrollPosition();
 
@@ -16,6 +17,9 @@ const PhoneImage : React.FC<IProps> = ({imgSrc}) => {
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(()=>{
+    if (!useZoom) {
+      return;
+    }
      const current = ref.current!.offsetTop - 300;
 
     let diff = Math.abs(window.scrollY - current);
@@ -33,7 +37,8 @@ const PhoneImage : React.FC<IProps> = ({imgSrc}) => {
       <div ref={ref} style={{
         backgroundImage: `url(${imgSrc || iphoneBackImg})`,
         backgroundPositionX: '50%' ,
-        backgroundSize: 'cover',
+        backgroundSize: useZoom ? 'cover' : 'contain',
+        backgroundRepeat: "no-repeat",
         width: '100%',
         height: zoomed ? 300 : 250,
 
@@ -45,4 +50,4 @@ const PhoneImage : React.FC<IProps> = ({imgSrc}) => {
   );
 };
 
-export default PhoneImage;
+export default WidthSafeImage;

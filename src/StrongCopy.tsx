@@ -1,20 +1,24 @@
-import React, {ReactChild, ReactChildren, useEffect, useRef, useState} from 'react';
+import React, {ReactChild, ReactChildren, ReactNode, useEffect, useRef, useState} from 'react';
 import {textColor} from "./color";
 
 interface IProps {
-  text: ReactChild,
+  text: ReactNode,
   reversed ? :boolean,
   power ? :boolean,
+  useZoom? : boolean,
 }
 
 
-const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false}) => {
+const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false, useZoom=false}) => {
 
   const ref = useRef<HTMLDivElement>(null);
 
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
+    if (!useZoom) {
+      return;
+    }
     const current = ref.current!.offsetTop - 300;
 
     let diff = Math.abs(window.scrollY - current);
@@ -31,7 +35,7 @@ const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false}) => {
     <div ref={ref} style={{
       fontWeight: power ? 800 : 700,
       color: reversed ? 'white' : textColor,
-      fontSize: power ?  33   :( zoomed ? 26 : 22),
+      fontSize: power ?  28   :( zoomed ? 22 : 18),
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',

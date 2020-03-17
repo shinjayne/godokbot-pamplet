@@ -19,7 +19,7 @@ const SlidePart : React.FC<IProps> = ({title, contents}) => {
     <>
       <SliderContainer>
         {title && <StrongCopy reversed={true} text={title}/>}
-        <Slider initialSlide={3} arrows={false} autoplay={true} autoplaySpeed={1500}  pauseOnDotsHover pauseOnFocus  infinite dots={true}  variableWidth>
+        <Slider initialSlide={0} arrows={false} autoplay={true} autoplaySpeed={1500}  pauseOnDotsHover pauseOnFocus  infinite dots={true}  variableWidth>
           {contents.map(content => <SliderItem key={content.key}> <MyCard title={content.title}>
             {content.imgSrc && <img src={content.imgSrc}  style={{width: 100, marginTop: 20, marginBottom: 40}} />}
             {content.body}

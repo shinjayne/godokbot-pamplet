@@ -3,34 +3,24 @@ import "slick-carousel/slick/slick-theme.css";
 
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import image3 from './ai.svg';
 // import videoDemo from './videodemo.mp4';
-import dongHangLogo from './dh.jpg';
-import barChart from './bar-chart.svg';
-import cookieImg from './fortune-cookie.svg';
-import mlImg from './machine-learning.svg';
-import bnfImg from './bnf.svg';
-import colorGraphImg from './line-chart.svg';
-import algoImg from './algorithm.svg';
-import lottoGif from './gif-lotto.gif';
-import phoneUseImg from './phone-use.jpg';
-import logo from './logo-mytto.png';
-import settingW from './setting-w.png';
-import resultP from './result-w.png';
-
+import talkIllust from './talk_il.png';
+import phoneUseImg from './phone-use2.jpg';
+import talkImage from './phonetalk.png';
+import roomList from './roomlist.png';
 // @ts-ignore
 import styled from 'styled-components';
 import FixedHeader from "./FixedHeader";
 import DisplayGroup from "./DisplayGroup";
 import useScrollPosition from "./useScrollPosition";
-import PhoneImage from "./PhoneImage";
-import Counter from "./Counter";
-import MyCard from "./MyCard";
-import SlidePart from "./SlidePart";
+import WidthSafeImage from "./WidthSafeImage";
 import {buttonColor, textColor} from "./color";
-import StrongCopy from "./StrongCopy";
-import ZoomVideo from "./ZoomVideo";
-import moment, {Moment, Duration} from "moment";
+import moment, {Duration} from "moment";
+import ListPart from "./ListPart";
+import KakaoButton from "./KakaoButton";
+import CustomButton from "./CustomButton";
+import ListDisplayGroup from "./ListDisplayGroup";
+import logo from './logo.png';
 
 
 const App: React.FC = () => {
@@ -74,11 +64,12 @@ const App: React.FC = () => {
         <FixedHeader toggled={toggleButton} title={'고독한 취준봇'} subTitle={'내게 필요한 취준 정보만 쏙쏙'}/>
 
         <div>
-          <FirstArea style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5) ), url(${phoneUseImg})`}}>
-            <FirstCopySmall> 자소서 꿀팁, 기업 최신이슈 등   </FirstCopySmall>
+          <FirstArea
+            style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5) ), url(${phoneUseImg})`}}>
+            <FirstCopySmall> 자소서 꿀팁, 기업 최신이슈 등 </FirstCopySmall>
             <FirstCopySmall> 고퀄리티 취준 컨텐츠가 매일 2개씩 쏙쏙. </FirstCopySmall>
             <FirstCopySmall>내게 딱 맞는 취준 도우미</FirstCopySmall>
-            <FirstCopy style={{fontFamily: 'Jalnan'}}>고독한 취준봇 🤖 </FirstCopy>
+            <FirstCopy style={{fontFamily: 'Jalnan'}}>고독한 취준봇 <img src={logo} style={{height: 30, marginTop: 3, marginLeft: 10}}/> </FirstCopy>
 
           </FirstArea>
 
@@ -89,116 +80,165 @@ const App: React.FC = () => {
 
           <DisplayGroup
             key={'hddcsfs'}
-            strongCopy={<>여러분의 행운 가이드 <br/> deepTery는</>}
-            imgContainerStyle={{margin: 0}}
-            imgNode={<img src={lottoGif} style={{width: '100%'}}/>}
-            desc={<> 복권 번호를 고르는 과정에서 <br/> 최선의 선택을 할 수 있도록 돕습니다. </>}/>
+            strongCopy={<>기업 준비하는 분들의 마음을 잘 알기에, 항상 필요한 정보만 전해드리려고 합니다</>}
+            imgContainerStyle={{margin: 0, display: 'flex', justifyContent: 'center'}}
+            imgNode={<WidthSafeImage imgSrc={talkIllust} useZoom={false} />}
+            desc={<> 고독한 취준봇은 정보공유 오픈 채팅방입니다. 💬 참여자들의 잡담은 일절 금지되어있고, 오롯히 저희가 제공하는 취준 컨텐츠로만 찾아뵙겠습니다. 마음 편히 알림을 켜놓으셔도
+              됩니다. </>}/>
 
-          <DisplayGroup
-            reversed={true}
-            key={'hdsdsas'}
-            strongCopy={<>로또는 어렵지만, <br/> deepTery 는 쉽습니다.</>}
-            imgNode={<ZoomVideo videoSrc={'./videodemo.mp4'}/>}
-            desc={'고정수, 제외수를 선택한 뒤, 엄선된 알고리즘과 기법들을 입맛에 맞게 고를 수 있습니다.'}
+
+          <ListDisplayGroup
+            reverse={true}
+            title={<>하루 두번, ✌️<br/> 고퀄리티 취준 컨텐츠로 찾아뵙겠습니다</>}
+            imgNode={<WidthSafeImage imgSrc={talkImage} key={'e'}/>}
+            desc={'매일 아침 저녁으로, 자소서부터 면접까지 필요한 정보를 골고루 보내드려요'}
+            contents={[{
+              title: '1️⃣ 꼭 알아야하는 시장 트렌드',
+              body: <>
+                Trend 2. 4차 산업혁명과 뉴메모리의 부상 <br/> <br/>
+
+                인공지능(AI), 5G 등의 발달로 데이터 양이 급증하면서, 새로운 메모리 반도체의 등장을 재촉하고 있다. 기존 D램과 플래시 메모리의 한계를...  <br/><br/>
+
+                함께 읽어보면 좋은 기사 : [3색 뉴메모리 - sk 뉴스룸]
+              </>,
+              key: '1',
+            },
+              {
+                title: '2️⃣ 자소서 작성 팁',
+                body: <>
+                  작성 팁 하나: STAR 기법 & 두괄식 작성법<br/><br/>
+
+                  1. STAR 기법<br/>
+
+                  Situation (상황) : 활동의 계기, 배경, 목표<br/>
+                  Task (목표) : 해결해야할 문제다<br/>
+                  ...<br/><br/>
+
+                  2. 왜 두괄식으로 써야할까? <br/>
+                  ...
+                </>,
+                key: '2',
+              },
+              {
+                title: '3️⃣ 합격자가 떠먹여주는 기업 분석',
+                body: <>
+                  ✔ SK하이닉스 한 줄 요약 ✔ <br/><br/>
+
+                  💡 Brand Identity<br/>
+                  - SK하이닉스는 "첨단기술의 중심, 더 나은 세상을 만드는 회사 (Technology Innovator for a better world)" 비전을 가지고 있습니다.<br/><br/>
+
+                  💡 Global Network <br/>
+                  - SK하이닉스는 이천, 청주의 국내 사업장을 포함하여 전세계에 [ 4개 생산법인 / 5개 연구개발법인 / 10개 판매법인 ] 운영하는 글로벌 기업입니다.<br/><br/>
+
+                  💡 Business Area<br/>
+                  - SK하이닉스의 주요 제품은 "메모리 반도체"와 "시스템 반도체" 입니다. [메모리 반도체]에는 DRAM, NAND Flash 제품이, [시스템 반도체]에는 CIS 제품이 있습니다.
+
+                </>,
+                key: '3',
+              },
+
+            ]}
           />
+
+          {/*<DisplayGroup*/}
+          {/*  reversed={true}*/}
+          {/*  key={'hdsdsas'}*/}
+          {/*  strongCopy={<>하루 두번,<br/> 고퀄리티 취준 컨텐츠로 찾아뵙겠습니다</>}*/}
+          {/*  imgNode={<ZoomVideo videoSrc={'./videodemo.mp4'}/>}*/}
+          {/*  desc={'매일 아침 저녁으로 ⚡꼭 알아야 하는 트렌드⚡,\n' +*/}
+          {/*  '              📍자소서 TIP : 문항 지원자(합격자) 예시 + 꿀팁📍 등 꼭 필요한 기업 정보를 공유할 예정입니다.'}*/}
+          {/*/>*/}
+
 
           <DisplayGroup
             key={'hdadsagfs'}
-            strongCopy={<>초당 <Counter inital={199500} max={200000}/> 번의 <br/> 연산을 통한 분석.</>}
-
-            imgNode={<PhoneImage imgSrc={settingW} key={'e'}/>}
-            desc={'알파고 인공지능 구현에 사용된 기술인 머신러닝, 선형회귀분석 등의 최신 알고리즘을 사용해 당첨 확률이 높은 번호들을 엄선합니다.'}
+            // strongCopy={<>초당 <Counter inital={199500} max={200000}/> 번의 <br/> 연산을 통한 분석.</>}
+            strongCopy={'고독한 취준봇에는 광고, 잡담이 없습니다'}
+            imgContainerStyle={{padding: 14, display: 'flex', justifyContent: 'center'}}
+            imgNode={<WidthSafeImage imgSrc={roomList} useZoom={false}/>}
+            desc={'더이상 정보를 얻기 위해 취준생 정보공유방의 잡담 알림을 참지 마세요. 🤯 고독한 취준방에서 원하는 기업의 취준 컨텐츠만 받아가세요.'}
           />
 
 
-          <SlidePart title={'deepTery의 분석 옵션'}
-                     contents={[{
-                       title: '회귀 분석',
-                       imgSrc: barChart,
-                       body: '끝수, 홀짝, 구간별 데이터 기반 통계분석',
-                       key: '1',
-                     },
-                       {
-                         title: '빈도수 분석',
-                         imgSrc: bnfImg,
-                         body: '빅데이터 기반으로 번호 빈도수 분석 ',
-                         key: '2',
-                       },
-                       {
-                         title: '색상 분석',
-                         imgSrc: colorGraphImg,
-                         body: '색상을 분산 패턴, 빈도수,구간별 분석',
-                         key: '3',
-                       },
-                       {
-                         title: 'AI 분석',
-                         imgSrc: mlImg,
-                         body: 'deepTery가 DB 기반의 시뮬레이션 결과 제공',
-                         key: '4',
-                       },
-                       {
-                         title: '패턴 분석',
-                         imgSrc: algoImg,
-                         body: '데이터를 도식화하여 패턴 기반 분석',
-                         key: '5',
-                       },
-                       {
-                         title: '사주 분석',
-                         imgSrc: cookieImg,
-                         body: '생년월일을 입력하여 나온 사주를 분석',
-                         key: '16',
-                       }
 
-
-                     ]}
-          />
-
-
-          <DisplayGroup
+          <ListPart
             key={'hdsfsdfsdds'}
-            strongCopy={<>알고리즘은 어렵지만, <br/> deepTery 는 쉽습니다. </>}
-            imgNode={<PhoneImage imgSrc={resultP} key={'k'}/>}
-            desc={'최적의 분석 결과와 종합적인 분석 근거를 제시합니다. 이 모든 계산이 deepTery 에서는 수초만에 이루어집니다.'}
+            title={'오, 그럼 어떻게 운영되나요? 👀'}
+            contents={[
+              {
+                title: '👉 기업의 공개채용 공고가 올라오면, 취준봇 운영팀이 해당 기업의 정보공유방을 만들어요.',
+                body: '정보공유방의 이름은 "고독한 00봇" 형식으로 만들어요. 운영하는 기업은 아래의 <어떤 기업들이 있나요?> 를 확인해주세요.',
+                key: 'a',
+              },
+              {
+                title: '👉 채널톡을 통해, 새로운 정보방 출시를 알려드려요.',
+                body: <>
+                  아래에 기업중에 취업을 준비하는 기업이 있다면, {`<`}고독한 취준봇{'>'} 카톡 채널을 친구추가 해주세요. <br/>
+                  <KakaoButton
+                    content={<>
+                     고독한 취준봇 채널 추가하기
+                    </>}/>
+                </>,
+                key: 'b',
+              },
+              {
+                title: '👉 원하는 기업 정보방과 입장료 계좌이체가 확인되면, 정보방 참여코드를 드려요. ',
+                body: '광고성 유저를 거르기위해 소정의 입장료를 받고있어요.💰 모든 과정은 채널톡을 통한 소통으로 이루어져요. 취준봇은 채널로 오는 메세지를 항상 확인중이에요! 🤖',
+                key: 'c',
+              },
+
+            ]}
           />
 
+
+          <ListPart
+            reverse={true}
+            title={'어떤 기업들이 있나요? '}
+            contents={[
+              {
+                title: 'SK하이닉스',
+                body: <>
+                  공개채용기간 : 3월 후반 ~ 4월 초 예상
+                  <CustomButton>
+                    하이닉스방 참여하기
+                  </CustomButton>
+                </>,
+                key:'k',
+              },
+              {
+                title: '삼성전자 (예정)',
+                body: <>
+                  공개채용기간 : 3월 후반 ~ 4월 초 예상
+                  <CustomButton type={'disabled'}>
+                    삼성전자방 참여하기 (준비중)
+                  </CustomButton>
+                </>,
+                key:'kb',
+              },
+              {
+                title: '취준컨텐츠가 필요한 기업을 알려주세요!',
+                body: <>
+                  고독한 취준봇 팀은 많은 분들이 요청주신 기업을 추가로 제공할 예정이에요 😉
+                  <CustomButton type={'primary'}>
+                    필요한 기업 알려주기
+                  </CustomButton>
+                </>,
+                key:'ka',
+              },
+            ]}/>
+
           <DisplayGroup
-            key={'hdsdsds'}
-            reversed
-            strongCopy={<>운명을 바꿀 시간까지... <br/> 🎉 </>}
+            key={'share'}
+            strongCopy={'함께 취준하는 친구에게 알려주세요 👥 '}
             desc={<>
+              <KakaoButton
+                style={{width: 300}}
+                content={<>
+                  취준하는 친구에게 공유하기
+                </>}/>
 
-              <div style={{marginTop: 30, marginBottom: 70}}>
-                <StrongCopy power reversed text={<div style={{display: "flex", alignItems: 'center'}}>
-                  <Counter delay={10} reversed inital={99} max={diff.months() * 30 + diff.days()}/> 일
-                  <span style={{width: 10}}/>
-                  <Counter delay={25} reversed inital={100} max={diff.hours()}/> 시간
-                  <span style={{width: 10}}/>
-                  <Counter delay={40} reversed inital={100} max={diff.minutes()}/> : <Counter delay={40} inital={100}
-                                                                                              reversed
-                                                                                              max={diff.seconds()}/>
-                </div>}/>
-
-              </div>
-
-
-              <div>
-                기다리면 복이 오나니...
-                <br/>
-                2020년 4월 1일에 출시 예정입니다. <br/>
-                <span style={{fontSize: 12}}>(출시 알림 신청자가 일정 기준 넘을 시)</span>
-              </div>
             </>}
-          />
 
-
-          <DisplayGroup
-            key={'hfsdfvdssa'}
-            strongCopy={<>
-              <div>벌써 <Counter inital={500} max={893}/> 번의</div>
-              운명이 바뀌었습니다.</>}
-            imgSrc={dongHangLogo}
-            desc={'지금 바로 "출시 알림" 을 신청해보세요.'}
-            imgContainerStyle={{display: 'flex', justifyContent: 'center'}}
           />
 
 
@@ -218,7 +258,9 @@ const App: React.FC = () => {
 
 
         </div>
-        <MainActionButton toggled={String(toggleButton)} onClick={()=>{window.open('https://forms.gle/boeozudJpDbWpXNh9')} } href='#'> 참여 코드 안내받기 </MainActionButton>
+        <MainActionButton toggled={String(toggleButton)} onClick={() => {
+          window.open('https://forms.gle/boeozudJpDbWpXNh9')
+        }} href='#'> 하이닉스방 참여하기 (진행중) </MainActionButton>
         <img style={{
           position: 'fixed', left: "calc(50% - 15px)",
           bottom: 13,
@@ -287,11 +329,13 @@ const FirstCopySmall = styled.div`
 export const Desc = styled.div`
 display: flex;
 flex-direction: column;
-align-items: center;
+align-items: flex-start;
 justify-content: center;
    text-align: center;
+   line-height: 1.9;
+   font-size: 14px;
+  width: 100%;
 `;
-
 
 
 export const MainActionButton = styled.a<{ toggled: string }>`
@@ -307,7 +351,7 @@ box-shadow:rgba(0, 0, 0, 0.2) 0px 0px 15px 0px;
 box-sizing:border-box;
 color: white;
 cursor : pointer;
-font-family:"Jalnan", Sans-serif;
+font-family:"Jalnan" , Sans-serif,sans-serif;
 font-size:18px;
 font-weight:700;
 height: 58px;
@@ -319,7 +363,9 @@ right: ${(props) => props.toggled === 'true' ? '0px' : '10%'};
 text-decoration-color:rgb(255, 255, 255);
 text-decoration-line:none;
 text-decoration-style:solid;
-text-size-adjust:100%;
+-webkit-text-size-adjust:100%;
+-ms-text-size-adjust:100%;
+-moz-text-size-adjust:100%;
 transition-delay:0s;
 transition-duration:0.35s;
 transition-property:all;
