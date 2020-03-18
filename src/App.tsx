@@ -3,12 +3,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 import React, {useEffect, useState} from 'react';
 import './App.css';
-// import videoDemo from './videodemo.mp4';
 import talkIllust from './draw1.svg';
 import phoneUseImg from './phone-use2.jpg';
-import talkImage from './phonetalk.png';
+import talkImage from './demo.png';
 import roomList from './draw2.svg';
-// @ts-ignore
 import styled from 'styled-components';
 import FixedHeader from "./FixedHeader";
 import DisplayGroup from "./DisplayGroup";
@@ -81,7 +79,7 @@ const App: React.FC = () => {
 
           <DisplayGroup
             key={'hddcsfs'}
-            strongCopy={<>기업 준비하는 분들의 마음을 잘 알기에, 항상 필요한 정보만 전해드리려고 합니다</>}
+            strongCopy={<>취업 준비하는 분들의 마음을 잘 알기에, <br/> 항상 필요한 정보만 전해드리려고 합니다</>}
             imgContainerStyle={{padding: 14, display: 'flex', justifyContent: 'center'}}
             imgNode={<CustomImage imgSrc={talkIllust} defaultHeight={200} useZoom={false}  />}
             desc={<> 고독한 취준봇은 정보공유 오픈 채팅방입니다. 💬 참여자들의 잡담은 일절 금지되어있고, 오롯히 저희가 제공하는 취준 컨텐츠로만 찾아뵙겠습니다. 마음 편히 알림을 켜놓으셔도
