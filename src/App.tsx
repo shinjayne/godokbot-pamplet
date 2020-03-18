@@ -248,11 +248,11 @@ const App: React.FC = () => {
             reversed
             desc={<>
               <div style={{}}>개인정보 보호 약관</div>
-              <div style={{fontSize: 12, marginTop: 24, marginBottom: 36}}>서비스 출시 알림 목적 외에 고객님의 개인정보는 일체 이용되지 않습니다.
+              <div style={{fontSize: 12, marginTop: 24, marginBottom: 36, textAlign: "start"}}>본 서비스는 이용자의 개인 정보를 수집하지 않습니다.
               </div>
 
-              <div style={{}}>서비스 이용 고시</div>
-              <div style={{fontSize: 12, marginTop: 24, marginBottom: 24}}>본 서비스는 이용자의 로또 번호 선택을 도울 뿐, 당첨을 보장하지 않습니다.
+              <div style={{}}>문의사항 및 피드백</div>
+              <div style={{fontSize: 12, marginTop: 24, marginBottom: 24, textAlign: 'start'}}>자세한 문의는 카카오톡 채널 {'<'}고독한 취준봇{'>'} 을 통해 언제든지 자유롭게 문의 및 피드백 부탁드립니다.
               </div>
             </>}
           />
