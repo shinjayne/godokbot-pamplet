@@ -4,16 +4,16 @@ import "slick-carousel/slick/slick-theme.css";
 import React, {useEffect, useState} from 'react';
 import './App.css';
 // import videoDemo from './videodemo.mp4';
-import talkIllust from './talk_il.png';
+import talkIllust from './draw1.svg';
 import phoneUseImg from './phone-use2.jpg';
 import talkImage from './phonetalk.png';
-import roomList from './roomlist.png';
+import roomList from './draw2.svg';
 // @ts-ignore
 import styled from 'styled-components';
 import FixedHeader from "./FixedHeader";
 import DisplayGroup from "./DisplayGroup";
 import useScrollPosition from "./useScrollPosition";
-import WidthSafeImage from "./WidthSafeImage";
+import CustomImage from "./CustomImage";
 import {buttonColor, textColor} from "./color";
 import moment, {Duration} from "moment";
 import ListPart from "./ListPart";
@@ -21,6 +21,7 @@ import KakaoButton from "./KakaoButton";
 import CustomButton from "./CustomButton";
 import ListDisplayGroup from "./ListDisplayGroup";
 import logo from './logo.png';
+import DrawerImage from "./DrawerImage";
 
 
 const App: React.FC = () => {
@@ -81,8 +82,8 @@ const App: React.FC = () => {
           <DisplayGroup
             key={'hddcsfs'}
             strongCopy={<>기업 준비하는 분들의 마음을 잘 알기에, 항상 필요한 정보만 전해드리려고 합니다</>}
-            imgContainerStyle={{margin: 0, display: 'flex', justifyContent: 'center'}}
-            imgNode={<WidthSafeImage imgSrc={talkIllust} useZoom={false} />}
+            imgContainerStyle={{padding: 14, display: 'flex', justifyContent: 'center'}}
+            imgNode={<CustomImage imgSrc={talkIllust} defaultHeight={200} useZoom={false}  />}
             desc={<> 고독한 취준봇은 정보공유 오픈 채팅방입니다. 💬 참여자들의 잡담은 일절 금지되어있고, 오롯히 저희가 제공하는 취준 컨텐츠로만 찾아뵙겠습니다. 마음 편히 알림을 켜놓으셔도
               됩니다. </>}/>
 
@@ -90,7 +91,7 @@ const App: React.FC = () => {
           <ListDisplayGroup
             reverse={true}
             title={<>하루 두번, ✌️<br/> 고퀄리티 취준 컨텐츠로 찾아뵙겠습니다</>}
-            imgNode={<WidthSafeImage imgSrc={talkImage} key={'e'}/>}
+            imgNode={<DrawerImage imgSrc={talkImage} key={'e'}/>}
             desc={'매일 아침 저녁으로, 자소서부터 면접까지 필요한 정보를 골고루 보내드려요'}
             contents={[{
               title: '1️⃣ 꼭 알아야하는 시장 트렌드',
@@ -155,7 +156,7 @@ const App: React.FC = () => {
             // strongCopy={<>초당 <Counter inital={199500} max={200000}/> 번의 <br/> 연산을 통한 분석.</>}
             strongCopy={'고독한 취준봇에는 광고, 잡담이 없습니다'}
             imgContainerStyle={{padding: 14, display: 'flex', justifyContent: 'center'}}
-            imgNode={<WidthSafeImage imgSrc={roomList} useZoom={false}/>}
+            imgNode={<CustomImage imgSrc={roomList} useZoom={true} defaultHeight={260} zoomHeight={280}/>}
             desc={'더이상 정보를 얻기 위해 취준생 정보공유방의 잡담 알림을 참지 마세요. 🤯 고독한 취준방에서 원하는 기업의 취준 컨텐츠만 받아가세요.'}
           />
 
