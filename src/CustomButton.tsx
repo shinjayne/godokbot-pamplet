@@ -6,10 +6,12 @@ export type customButtonType = 'primary' | 'default' | 'disabled';
 interface IProps {
   style?: CSSProperties,
   type?: customButtonType,
+  onClick?: () => void,
+  id?: string,
 }
 
 
-const CustomButton : React.FC<PropsWithChildren<IProps>> = ({children, style={}, type='default'}) => {
+const CustomButton : React.FC<PropsWithChildren<IProps>> = ({id, children, style={}, type='default', onClick}) => {
 
 
   const colorMap : {[k in customButtonType] : CSSProperties} = {
@@ -32,7 +34,7 @@ const CustomButton : React.FC<PropsWithChildren<IProps>> = ({children, style={},
   };
 
   return (
-    <Button style={{...colorMap[type], ...style}}>
+    <Button id={id} onClick={onClick} style={{...colorMap[type], ...style}}>
       {children}
     </Button>
   );

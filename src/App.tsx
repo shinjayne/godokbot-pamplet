@@ -55,6 +55,15 @@ const App: React.FC = () => {
   }, [diff]);
 
 
+  function goChannel() {
+    // @ts-ignore
+    window['goKakaoChannelTalk']();
+  }
+  function addChannel() {
+    // @ts-ignore
+    window['addChannelTalk']();
+  }
+
   return (
     <>
 
@@ -68,7 +77,9 @@ const App: React.FC = () => {
             <FirstCopySmall> 자소서 꿀팁, 기업 최신이슈 등 </FirstCopySmall>
             <FirstCopySmall> 고퀄리티 취준 컨텐츠가 매일 2개씩 쏙쏙. </FirstCopySmall>
             <FirstCopySmall>내게 딱 맞는 취준 도우미</FirstCopySmall>
-            <FirstCopy style={{fontFamily: 'Jalnan'}}>고독한 취준봇 <img src={logo} style={{height: 30, marginTop: 3, marginLeft: 10}}/> </FirstCopy>
+            <FirstCopy style={{fontFamily: 'Jalnan'}}>고독한 취준봇 <img src={logo}
+                                                                   style={{height: 30, marginTop: 3, marginLeft: 10}}/>
+            </FirstCopy>
 
           </FirstArea>
 
@@ -81,8 +92,8 @@ const App: React.FC = () => {
             key={'hddcsfs'}
             strongCopy={<>취업 준비하는 분들의 마음을 잘 알기에, <br/> 항상 필요한 정보만 전해드리려고 합니다</>}
             imgContainerStyle={{padding: 14, display: 'flex', justifyContent: 'center'}}
-            imgNode={<CustomImage imgSrc={talkIllust} defaultHeight={200} useZoom={false}  />}
-            desc={<> 고독한 취준봇은 정보공유 오픈 채팅방입니다. 💬 참여자들의 잡담은 일절 금지되어있고, 오롯히 저희가 제공하는 취준 컨텐츠로만 찾아뵙겠습니다. 마음 편히 알림을 켜놓으셔도
+            imgNode={<CustomImage imgSrc={talkIllust} defaultHeight={200} useZoom={false}/>}
+            desc={<> 고독한 취준봇은 정보공유 오픈 채팅방입니다. 💬 참여자들의 잡담은 일절 금지되어있고, 오롯이 저희가 제공하는 취준 컨텐츠로만 찾아뵙겠습니다. 마음 편히 알림을 켜놓으셔도
               됩니다. </>}/>
 
 
@@ -90,13 +101,24 @@ const App: React.FC = () => {
             reverse={true}
             title={<>하루 두번, ✌️<br/> 고퀄리티 취준 컨텐츠로 찾아뵙겠습니다</>}
             imgNode={<DrawerImage imgSrc={talkImage} key={'e'}/>}
-            desc={'매일 아침 저녁으로, 자소서부터 면접까지 필요한 정보를 골고루 보내드려요'}
+            desc={<>
+              <div style={{alignSelf: "center"}}>
+              매일 아침 저녁,<br/> 자소서부터 면접까지! <br/> 취준에 도움이 되는 정보를 골고루 보내드려요
+              </div>
+              <KakaoButton
+                forShare={true}
+                style={{width: 300}}
+                content={<>
+                  취준하는 친구에게 공유하기
+                </>}
+              />
+            </>}
             contents={[{
               title: '1️⃣ 꼭 알아야하는 시장 트렌드',
               body: <>
                 Trend 2. 4차 산업혁명과 뉴메모리의 부상 <br/> <br/>
 
-                인공지능(AI), 5G 등의 발달로 데이터 양이 급증하면서, 새로운 메모리 반도체의 등장을 재촉하고 있다. 기존 D램과 플래시 메모리의 한계를...  <br/><br/>
+                인공지능(AI), 5G 등의 발달로 데이터 양이 급증하면서, 새로운 메모리 반도체의 등장을 재촉하고 있다. 기존 D램과 플래시 메모리의 한계를... <br/><br/>
 
                 함께 읽어보면 좋은 기사 : [3색 뉴메모리 - sk 뉴스룸]
               </>,
@@ -124,7 +146,8 @@ const App: React.FC = () => {
                   ✔ SK하이닉스 한 줄 요약 ✔ <br/><br/>
 
                   💡 Brand Identity<br/>
-                  - SK하이닉스는 "첨단기술의 중심, 더 나은 세상을 만드는 회사 (Technology Innovator for a better world)" 비전을 가지고 있습니다.<br/><br/>
+                  - SK하이닉스는 "첨단기술의 중심, 더 나은 세상을 만드는 회사 (Technology Innovator for a better world)" 비전을 가지고
+                  있습니다.<br/><br/>
 
                   💡 Global Network <br/>
                   - SK하이닉스는 이천, 청주의 국내 사업장을 포함하여 전세계에 [ 4개 생산법인 / 5개 연구개발법인 / 10개 판매법인 ] 운영하는 글로벌 기업입니다.<br/><br/>
@@ -159,7 +182,6 @@ const App: React.FC = () => {
           />
 
 
-
           <ListPart
             key={'hdsfsdfsdds'}
             title={'오, 그럼 어떻게 운영되나요? 👀'}
@@ -179,8 +201,9 @@ const App: React.FC = () => {
                 body: <>
                   아래에 기업중에 취업을 준비하는 기업이 있다면, {`<`}고독한 취준봇{'>'} 카톡 채널을 친구추가 해주세요. <br/>
                   <KakaoButton
+                    onClick={addChannel}
                     content={<>
-                     고독한 취준봇 채널 추가하기
+                      고독한 취준봇 채널 추가하기
                     </>}/>
                 </>,
                 key: 'b',
@@ -198,32 +221,40 @@ const App: React.FC = () => {
               {
                 title: 'SK하이닉스',
                 body: <>
-                  공개채용기간 : 3월 후반 ~ 4월 초 예상
-                  <CustomButton>
+                  공개채용기간 : 2020년 3월 30일 ~ 2020년 4월 10일
+                  <CustomButton onClick={goChannel}>
                     하이닉스방 참여하기
                   </CustomButton>
+                  <CustomButton style={{marginTop: 0}}
+                                onClick={() => window.open("https://www.skcareers.com/POS/TRM2102.aspx?PosCD=P2003A110002&rURL=/POS/TRM2101.aspx")}>
+                    공식 공채 공고
+                  </CustomButton>
                 </>,
-                key:'k',
+                key: 'k',
               },
               {
                 title: '삼성전자 (예정)',
                 body: <>
-                  공개채용기간 : 3월 후반 ~ 4월 초 예상
+                  공개채용기간 : 4월 초 ~ 4월 후반 예상
                   <CustomButton type={'disabled'}>
-                    삼성전자방 참여하기 (준비중)
+                    삼성전자방 참여하기 (오픈 준비중)
+                  </CustomButton>
+                  <CustomButton style={{marginTop: 0}}
+                                onClick={() => window.open("http://www.samsungcareers.com/rec/apply/ComResumeServlet?cmd=pstMain")}>
+                    공식 공채 공고
                   </CustomButton>
                 </>,
-                key:'kb',
+                key: 'kb',
               },
               {
                 title: '취준컨텐츠가 필요한 기업을 알려주세요!',
                 body: <>
                   고독한 취준봇 팀은 많은 분들이 요청주신 기업을 추가로 제공할 예정이에요 😉
-                  <CustomButton type={'primary'}>
+                  <CustomButton type={'primary'} onClick={goChannel}>
                     필요한 기업 알려주기
                   </CustomButton>
                 </>,
-                key:'ka',
+                key: 'ka',
               },
             ]}/>
 
@@ -232,6 +263,7 @@ const App: React.FC = () => {
             strongCopy={'함께 취준하는 친구에게 알려주세요 👥 '}
             desc={<>
               <KakaoButton
+                forShare={true}
                 style={{width: 300}}
                 content={<>
                   취준하는 친구에게 공유하기
@@ -247,20 +279,20 @@ const App: React.FC = () => {
             reversed
             desc={<>
               <div style={{}}>개인정보 보호 약관</div>
-              <div style={{fontSize: 12, marginTop: 24, marginBottom: 36, textAlign: "start"}}>본 서비스는 이용자의 개인 정보를 수집하지 않습니다.
+              <div style={{fontSize: 12, marginTop: 24, marginBottom: 36, textAlign: "start"}}>본 서비스는 이용자의 개인 정보를 수집하지
+                않습니다.
               </div>
 
               <div style={{}}>문의사항 및 피드백</div>
-              <div style={{fontSize: 12, marginTop: 24, marginBottom: 24, textAlign: 'start'}}>자세한 문의는 카카오톡 채널 {'<'}고독한 취준봇{'>'} 을 통해 언제든지 자유롭게 문의 및 피드백 부탁드립니다.
+              <div style={{fontSize: 12, marginTop: 24, marginBottom: 24, textAlign: 'start'}}>자세한 문의는 카카오톡 채널 {'<'}고독한
+                취준봇{'>'} 을 통해 언제든지 자유롭게 문의 및 피드백 부탁드립니다.
               </div>
             </>}
           />
 
 
         </div>
-        <MainActionButton toggled={String(toggleButton)} onClick={() => {
-          window.open('https://forms.gle/boeozudJpDbWpXNh9')
-        }} href='#'> 하이닉스방 참여하기 (진행중) </MainActionButton>
+        <MainActionButton toggled={String(toggleButton)} onClick={goChannel} href='#'> 하이닉스방 참여하기 (진행중) </MainActionButton>
         <img style={{
           position: 'fixed', left: "calc(50% - 15px)",
           bottom: 13,
