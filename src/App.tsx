@@ -24,12 +24,7 @@ import DrawerImage from "./DrawerImage";
 
 const App: React.FC = () => {
 
-  const targetOpen = moment('2020-04-01 00:00:00');
-
   const [toggleButton, setToggleButton] = useState(false);
-  const [sec, setSec] = useState<number>(60);
-  const [diff, setDiff] = useState<Duration>(moment.duration(targetOpen.diff(moment())));
-
 
   let position = useScrollPosition();
 
@@ -43,22 +38,12 @@ const App: React.FC = () => {
 
   }, [position]);
 
-  useEffect(() => {
-    decrease();
-
-    async function decrease() {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSec(sec - 1);
-
-      setDiff(moment.duration(targetOpen.diff(moment())));
-    }
-  }, [diff]);
-
 
   function goChannel() {
     // @ts-ignore
     window['goKakaoChannelTalk']();
   }
+
   function addChannel() {
     // @ts-ignore
     window['addChannelTalk']();
@@ -84,10 +69,6 @@ const App: React.FC = () => {
           </FirstArea>
 
 
-          {/*<video className='videoTag' autoPlay loop muted>*/}
-          {/*  <source src={`./videodemo.mp4`} type='video/mp4' />*/}
-          {/*</video>*/}
-
           <DisplayGroup
             key={'hddcsfs'}
             strongCopy={<>취업 준비하는 분들의 마음을 잘 알기에, <br/> 항상 필요한 정보만 전해드리려고 합니다</>}
@@ -103,7 +84,7 @@ const App: React.FC = () => {
             imgNode={<DrawerImage imgSrc={talkImage} key={'e'}/>}
             desc={<>
               <div style={{alignSelf: "center"}}>
-              매일 아침 저녁,<br/> 자소서부터 면접까지! <br/> 취준에 도움이 되는 정보를 골고루 보내드려요
+                매일 아침 저녁,<br/> 자소서부터 면접까지! <br/> 취준에 도움이 되는 정보를 골고루 보내드려요
               </div>
               <KakaoButton
                 forShare={true}
@@ -292,7 +273,8 @@ const App: React.FC = () => {
 
 
         </div>
-        <MainActionButton toggled={String(toggleButton)} onClick={goChannel} href='#'> 하이닉스방 참여하기 (진행중) </MainActionButton>
+        <MainActionButton toggled={String(toggleButton)} onClick={goChannel} href='#'> 하이닉스방 참여하기
+          (진행중) </MainActionButton>
         <img style={{
           position: 'fixed', left: "calc(50% - 15px)",
           bottom: 13,
