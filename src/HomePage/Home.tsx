@@ -2,24 +2,23 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import React, {useEffect, useState} from 'react';
-import './App.css';
+
 import talkIllust from './draw1.svg';
 import phoneUseImg from './phone-use2.jpg';
 import talkImage from './demo.png';
 import roomList from './draw2.svg';
 import styled from 'styled-components';
-import FixedHeader from "./FixedHeader";
-import DisplayGroup from "./DisplayGroup";
-import useScrollPosition from "./useScrollPosition";
-import CustomImage from "./CustomImage";
-import {buttonColor, textColor} from "./color";
-import moment, {Duration} from "moment";
-import ListPart from "./ListPart";
-import KakaoButton from "./KakaoButton";
-import CustomButton from "./CustomButton";
-import ListDisplayGroup from "./ListDisplayGroup";
-import logo from './logo.png';
-import DrawerImage from "./DrawerImage";
+import FixedHeader from "../Components/Header/FixedHeader";
+import DisplayGroup from "../Components/DisplayGroup/DisplayGroup";
+import useScrollPosition from "../useScrollPosition";
+import CustomImage from "../Components/CustomImage";
+import {buttonColor, textColor} from "../color";
+import ListPart from "../Components/DisplayGroup/ListPart";
+import KakaoButton from "../Components/Buttons/KakaoButton";
+import CustomButton from "../Components/Buttons/CustomButton";
+import ListDisplayGroup from "../Components/DisplayGroup/ListDisplayGroup";
+import logo from '../logo.png';
+import DrawerImage from "../Components/DrawerImage";
 
 
 const Home: React.FC = () => {

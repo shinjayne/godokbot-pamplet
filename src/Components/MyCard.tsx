@@ -1,6 +1,6 @@
 import React, {PropsWithChildren, ReactNode, useEffect, useState} from 'react';
 import styled from "styled-components";
-import {textColor} from "./color";
+import {textColor} from "../color";
 
 interface IProps {
   title? : ReactNode,

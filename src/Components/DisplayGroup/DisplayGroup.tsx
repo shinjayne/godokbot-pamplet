@@ -1,8 +1,8 @@
 import React, {CSSProperties, ReactChild} from 'react';
 import DisplaySection from "./DisplaySection";
-import StrongCopy from "./StrongCopy";
-import {Desc} from "./Home";
-import ZoomImage from "./ZoomImage";
+import StrongCopy from "../StrongCopy";
+import {Desc} from "../../HomePage/Home";
+import CustomImage from "../CustomImage";
 
 export interface DisplayGroupProps {
   strongCopy?: ReactChild,
@@ -23,7 +23,7 @@ const DisplayGroup: React.FC<DisplayGroupProps> = ({strongCopy, imgSrc, imgNode,
         {(imgNode || imgSrc) &&
         <div style={{marginTop:  40, marginBottom: 40, width: '100%',  ...imgContainerStyle}}>
           {imgNode}
-          {!imgNode && imgSrc && <ZoomImage imgSrc={imgSrc}/>}
+          {!imgNode && imgSrc && <CustomImage imgSrc={imgSrc}/>}
         </div>
         }
         <Desc>

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import iphoneBackImg from "./iphone-back.png";
+import iphoneBackImg from "../HomePage/iphone-back.png";
 
 interface IProps {
   imgSrc?: string,

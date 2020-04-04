@@ -1,21 +1,24 @@
-import React, {ReactNode} from 'react';
-import Slider from "react-slick";
-import MyCard from "./MyCard";
+import React, {CSSProperties, ReactNode} from 'react';
 import styled from "styled-components";
-import StrongCopy from "./StrongCopy";
-import {primaryColor, textColor} from "./color";
-import {Desc} from "./Home";
+import StrongCopy from "../StrongCopy";
+import {primaryColor, textColor} from "../../color";
+import {Desc} from "../../HomePage/Home";
+import CustomImage from "../CustomImage";
 
 
 interface IProps {
   reverse?: boolean,
-  title?: string;
+  title?: ReactNode;
+  imgNode?: ReactNode,
+  imgSrc?: string,
+  imgContainerStyle?: CSSProperties,
+  desc?: ReactNode,
 
   contents: { title?: ReactNode, imgSrc?: string, body?: ReactNode, key?: number | string }[],
 }
 
 
-const ListPart: React.FC<IProps> = ({reverse = false, title, contents}) => {
+const ListDisplayGroup: React.FC<IProps> = ({reverse = false, title, contents, imgNode, imgSrc, imgContainerStyle, desc,}) => {
 
   return (
     <>
@@ -23,6 +26,15 @@ const ListPart: React.FC<IProps> = ({reverse = false, title, contents}) => {
         {title && <StrongCopy reversed={reverse} text={title}/>}
         <br/>
 
+        {(imgNode || imgSrc) &&
+        <div style={{marginTop: 40, marginBottom: 40, width: '100%', ...imgContainerStyle}}>
+          {imgNode}
+          {!imgNode && imgSrc && <CustomImage imgSrc={imgSrc}/>}
+        </div>
+        }
+        <Desc style={{marginBottom: 40}}>
+          {desc}
+        </Desc>
 
         {contents.map(content => <ListCard key={content.key}>
           <CardTitle>{content.title}</CardTitle>
@@ -35,10 +47,11 @@ const ListPart: React.FC<IProps> = ({reverse = false, title, contents}) => {
   );
 };
 
-const SliderContainer = styled.div<{reverse: string}>`
+const SliderContainer = styled.div<{ reverse: string }>`
   padding: 60px 20px 40px 20px;
-  background-color: ${({reverse}) => reverse === 'true' ? primaryColor: 'white' } ;
+  background-color: ${({reverse}) => reverse === 'true' ? primaryColor : 'white'} ;
   margin-bottom: 70px;
+  color: ${({reverse}) => reverse === 'true' ? 'white': textColor};
 `;
 
 
@@ -63,5 +76,4 @@ const CardTitle = styled.div`
 `;
 
 
-
-export default ListPart;
+export default ListDisplayGroup;

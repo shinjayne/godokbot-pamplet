@@ -1,7 +1,7 @@
 import React, {PropsWithChildren} from 'react';
 // @ts-ignore
 import Zoom from "react-reveal/Zoom";
-import {primaryColor, textColor} from "./color";
+import {primaryColor, textColor} from "../../color";
 
 interface IProps {
   reversed: boolean,

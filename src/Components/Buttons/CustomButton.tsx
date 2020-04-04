@@ -1,6 +1,6 @@
 import React, {CSSProperties, PropsWithChildren, useEffect, useState} from 'react';
 import styled from "styled-components";
-import {buttonColor, primaryColor, textColor} from "./color";
+import {buttonColor, primaryColor, textColor} from "../../color";
 
 export type customButtonType = 'primary' | 'default' | 'disabled';
 interface IProps {

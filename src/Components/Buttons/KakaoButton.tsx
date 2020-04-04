@@ -1,5 +1,5 @@
 import React, {CSSProperties, ReactNode, useEffect, useState} from 'react';
-import KakaoLogo from './kakao.png';
+import KakaoLogo from '../../HomePage/kakao.png';
 import styled from "styled-components";
 import CustomButton from "./CustomButton";
 

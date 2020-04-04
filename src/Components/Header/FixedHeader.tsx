@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from "antd/lib/typography/Title";
-import {primaryColor} from "./color";
+import {primaryColor} from "../../color";
 import styled from "styled-components";
 
 interface IProps {

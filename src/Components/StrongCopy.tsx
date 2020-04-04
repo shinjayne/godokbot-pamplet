@@ -1,5 +1,5 @@
 import React, {ReactChild, ReactChildren, ReactNode, useEffect, useRef, useState} from 'react';
-import {textColor} from "./color";
+import {textColor} from "../color";
 
 interface IProps {
   text: ReactNode,

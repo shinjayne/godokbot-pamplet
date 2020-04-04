@@ -1,8 +1,8 @@
 import React, {ReactNode} from 'react';
 import Slider from "react-slick";
-import MyCard from "./MyCard";
+import MyCard from "./Components/MyCard";
 import styled from "styled-components";
-import StrongCopy from "./StrongCopy";
+import StrongCopy from "./Components/StrongCopy";
 import {primaryColor} from "./color";
 
 
