@@ -4,7 +4,7 @@ import MyCard from "./MyCard";
 import styled from "styled-components";
 import StrongCopy from "./StrongCopy";
 import {primaryColor, textColor} from "./color";
-import {Desc} from "./App";
+import {Desc} from "./Home";
 import DisplayGroup, {DisplayGroupProps} from "./DisplayGroup";
 import ZoomImage from "./ZoomImage";
 import DisplaySection from "./DisplaySection";

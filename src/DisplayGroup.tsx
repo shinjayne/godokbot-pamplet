@@ -1,7 +1,7 @@
 import React, {CSSProperties, ReactChild} from 'react';
 import DisplaySection from "./DisplaySection";
 import StrongCopy from "./StrongCopy";
-import {Desc} from "./App";
+import {Desc} from "./Home";
 import ZoomImage from "./ZoomImage";
 
 export interface DisplayGroupProps {

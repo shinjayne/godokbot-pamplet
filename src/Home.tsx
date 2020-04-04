@@ -22,7 +22,7 @@ import logo from './logo.png';
 import DrawerImage from "./DrawerImage";
 
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
 
   const [toggleButton, setToggleButton] = useState(false);
 
@@ -393,4 +393,4 @@ z-index:3;
 `;
 
 
-export default App;
+export default Home;

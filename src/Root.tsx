@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import App from "./App";
+import Home from "./Home";
 
 interface IProps {
 }
@@ -24,7 +24,7 @@ const Root: React.FC<IProps> = () => {
           </Route>
 
           <Route path={'/'}>
-            <App/>
+            <Home/>
           </Route>
         </Switch>
       </BrowserRouter>
