@@ -15,7 +15,7 @@ const FixedHeader: React.FC<IProps> = ({toggled = false, title, subTitle}) => {
   return (
     <>
       <FixedContainer toggled={String(toggled)}>
-        <Title level={1} style={{
+        <div style={{
           fontWeight: 1000,
           fontSize: toggled ? 25 : 30,
           margin: "0 0 6px 0",
@@ -28,7 +28,7 @@ const FixedHeader: React.FC<IProps> = ({toggled = false, title, subTitle}) => {
           transitionDelay: '0s',
           transitionDuration: '0.35s',
           transitionProperty: 'all',
-        }}> {title}</Title>
+        }}> {title}</div>
         <span style={{fontSize: 14}}>
         {toggled && subTitle}
         </span>
@@ -51,7 +51,7 @@ const FixedContainer = styled.div<{ toggled: string }>`
         
         padding: 16px;
 
-        height: ${({toggled}) => toggled === 'true' ? '60px' : '40px'};
+        height: ${({toggled}) => toggled === 'true' ? '92px' : '40px'};
 
         transition-delay:0s;
         transition-duration:0.35s;

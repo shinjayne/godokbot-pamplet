@@ -1,6 +1,4 @@
 import React, {ReactNode} from 'react';
-import Slider from "react-slick";
-import MyCard from "../MyCard";
 import styled from "styled-components";
 import StrongCopy from "../StrongCopy";
 import {primaryColor, textColor} from "../../color";
@@ -42,7 +40,7 @@ const SliderContainer = styled.div<{reverse: string}>`
 `;
 
 
-const ListCard = styled.div`
+export const ListCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;

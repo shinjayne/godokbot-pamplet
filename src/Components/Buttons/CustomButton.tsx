@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {buttonColor, primaryColor, textColor} from "../../color";
 
 export type customButtonType = 'primary' | 'default' | 'disabled';
+
 interface IProps {
   style?: CSSProperties,
   type?: customButtonType,
@@ -11,10 +12,10 @@ interface IProps {
 }
 
 
-const CustomButton : React.FC<PropsWithChildren<IProps>> = ({id, children, style={}, type='default', onClick}) => {
+const CustomButton: React.FC<PropsWithChildren<IProps>> = ({id, children, style = {}, type = 'default', onClick}) => {
 
 
-  const colorMap : {[k in customButtonType] : CSSProperties} = {
+  const colorMap: { [k in customButtonType]: CSSProperties } = {
     primary: {
       backgroundColor: buttonColor,
       color: 'white',

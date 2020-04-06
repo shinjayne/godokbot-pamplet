@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  BrowserRouter,
+  HashRouter,
   Switch,
   Route,
   Link
 } from "react-router-dom";
 import Home from "./HomePage/Home";
+import ShareEventPage from "./ShareEventPage/ShareEventPage";
 
 interface IProps {
 }
@@ -15,19 +16,19 @@ const Root: React.FC<IProps> = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
 
 
           <Route path={'/share-congrats'}>
-            helloWorld
+            <ShareEventPage  />
           </Route>
 
           <Route path={'/'}>
             <Home/>
           </Route>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };

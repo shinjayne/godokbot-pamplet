@@ -1,6 +1,3 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import React, {useEffect, useState} from 'react';
 
 import talkIllust from './draw1.svg';
@@ -12,13 +9,18 @@ import FixedHeader from "../Components/Header/FixedHeader";
 import DisplayGroup from "../Components/DisplayGroup/DisplayGroup";
 import useScrollPosition from "../useScrollPosition";
 import CustomImage from "../Components/CustomImage";
-import {buttonColor, textColor} from "../color";
+import {buttonColor} from "../color";
 import ListPart from "../Components/DisplayGroup/ListPart";
 import KakaoButton from "../Components/Buttons/KakaoButton";
 import CustomButton from "../Components/Buttons/CustomButton";
 import ListDisplayGroup from "../Components/DisplayGroup/ListDisplayGroup";
 import logo from '../logo.png';
 import DrawerImage from "../Components/DrawerImage";
+import {ContentBody} from "../Components/ContentBody";
+import samsungbi from './삼성전자bi.png';
+import hynixbi from './hynixbi.jpeg';
+import Element from "react-scroll/modules/components/Element";
+import {scroller} from "react-scroll";
 
 
 const Home: React.FC = () => {
@@ -48,11 +50,23 @@ const Home: React.FC = () => {
     window['addChannelTalk']();
   }
 
+  function scrollToOngoingCompany() {
+    // Somewhere else, even another file
+    scroller.scrollTo('ongoingCompany', {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+      // containerId: 'ContainerElementID',
+      offset: -60, // Scrolls to element + 50 pixels down the page
+    });
+
+  }
+
   return (
     <>
 
 
-      <Root>
+      <ContentBody>
         <FixedHeader toggled={toggleButton} title={'고독한 취준봇'} subTitle={'내게 필요한 취준 정보만 쏙쏙'}/>
 
         <div>
@@ -193,50 +207,62 @@ const Home: React.FC = () => {
             ]}
           />
 
+          <Element name={'ongoingCompany'}>
+            <ListPart
+              reverse={true}
+              title={'어떤 기업들이 있나요? '}
+              contents={[
+                {
+                  title: 'SK하이닉스',
+                  body: <>
+                    공개채용기간 : 2020년 3월 30일 ~ 2020년 4월 10일
 
-          <ListPart
-            reverse={true}
-            title={'어떤 기업들이 있나요? '}
-            contents={[
-              {
-                title: 'SK하이닉스',
-                body: <>
-                  공개채용기간 : 2020년 3월 30일 ~ 2020년 4월 10일
-                  <CustomButton onClick={goChannel}>
-                    하이닉스방 참여하기
-                  </CustomButton>
-                  <CustomButton style={{marginTop: 0}}
-                                onClick={() => window.open("https://www.skcareers.com/POS/TRM2102.aspx?PosCD=P2003A110002&rURL=/POS/TRM2101.aspx")}>
-                    공식 공채 공고
-                  </CustomButton>
-                </>,
-                key: 'k',
-              },
-              {
-                title: '삼성전자 (예정)',
-                body: <>
-                  공개채용기간 : 4월 초 ~ 4월 후반 예상
-                  <CustomButton type={'disabled'}>
-                    삼성전자방 참여하기 (오픈 준비중)
-                  </CustomButton>
-                  <CustomButton style={{marginTop: 0}}
-                                onClick={() => window.open("http://www.samsungcareers.com/rec/apply/ComResumeServlet?cmd=pstMain")}>
-                    공식 공채 공고
-                  </CustomButton>
-                </>,
-                key: 'kb',
-              },
-              {
-                title: '취준컨텐츠가 필요한 기업을 알려주세요!',
-                body: <>
-                  고독한 취준봇 팀은 많은 분들이 요청주신 기업을 추가로 제공할 예정이에요 😉
-                  <CustomButton type={'primary'} onClick={goChannel}>
-                    필요한 기업 알려주기
-                  </CustomButton>
-                </>,
-                key: 'ka',
-              },
-            ]}/>
+                    <CustomImage imgSrc={hynixbi} useZoom={false} defaultHeight={100}/>
+
+                    <CustomButton onClick={goChannel}>
+                      모음집 받아보기 (정보방 마감됨)
+                    </CustomButton>
+                    <CustomButton style={{marginTop: 0}}
+                                  onClick={() => window.open("https://www.skcareers.com/POS/TRM2102.aspx?PosCD=P2003A110002&rURL=/POS/TRM2101.aspx")}>
+                      공식 공채 공고
+                    </CustomButton>
+
+                    (4월 5일 정보방이 마감되었습니다)
+                  </>,
+                  key: 'k',
+                },
+                {
+                  title: '삼성전자',
+                  body: <>
+
+                    공개채용기간 : 4월 6일 ~ 4월 13일 (지원서 접수)
+
+                    <CustomImage imgSrc={samsungbi} useZoom={false} defaultHeight={80}
+                                 style={{marginTop: 20, marginBottom: 20}}/>
+
+                    <CustomButton onClick={goChannel}>
+                      삼성전자방 참여하기
+                    </CustomButton>
+                    <CustomButton style={{marginTop: 0}}
+                                  onClick={() => window.open("http://www.samsungcareers.com/rec/apply/ComResumeServlet?cmd=pstMain")}>
+                      공식 공채 공고
+                    </CustomButton>
+                  </>,
+                  key: 'kb',
+                },
+                {
+                  title: '취준컨텐츠가 필요한 기업을 알려주세요!',
+                  body: <>
+                    고독한 취준봇 팀은 많은 분들이 요청주신 기업을 추가로 제공할 예정이에요 😉
+                    <CustomButton type={'primary'} onClick={goChannel}>
+                      필요한 기업 알려주기
+                    </CustomButton>
+                  </>,
+                  key: 'ka',
+                },
+              ]}/>
+          </Element>
+
 
           <DisplayGroup
             key={'share'}
@@ -272,8 +298,14 @@ const Home: React.FC = () => {
 
 
         </div>
-        <MainActionButton toggled={String(toggleButton)} onClick={goChannel} href='#'> 하이닉스방 참여하기
-          (진행중) </MainActionButton>
+
+
+          <MainActionButton toggled={String(toggleButton)} onClick={scrollToOngoingCompany} href='#'>
+            {/*<CustomImage imgSrc={samsungbi} defaultHeight={40}/>*/}
+            {/*<CustomImage imgSrc={hynixbi} defaultHeight={40}/>*/}
+             🔴 삼성전자, 하이닉스 진행중! 👇
+          </MainActionButton>
+
         <img style={{
           position: 'fixed', left: "calc(50% - 15px)",
           bottom: 13,
@@ -281,24 +313,10 @@ const Home: React.FC = () => {
           textShadow: "rgba(0, 0, 0, 0.2) 0px 0px 15px 0px",
         }} src="https://static.toss.im/web-general/homepage/static/images/down-arrow.png" alt="내용 보기"/>
 
-      </Root>
+      </ContentBody>
     </>
   );
 };
-
-const Root = styled.div`
-  font-family:  'NanumSquare' , sans-serif; 
-  color: ${textColor};
-  overscroll-behavior-x: none;
-  word-spacing: initial;
-  line-height: 1.4;
-  
-  width: 100vw;
-  @media screen and (min-width: 420px) {
-  max-width: 420px;
-  }
-  
-`;
 
 
 const FirstArea = styled.div`
@@ -365,7 +383,7 @@ box-sizing:border-box;
 color: white;
 cursor : pointer;
 font-family:"Jalnan" , Sans-serif,sans-serif;
-font-size:18px;
+font-size:16px;
 font-weight:700;
 height: 58px;
 left: ${(props) => props.toggled === 'true' ? '0px' : '10%'};

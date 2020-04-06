@@ -1,18 +1,18 @@
-import React, {PropsWithChildren, ReactNode, useEffect, useState} from 'react';
+import React, {CSSProperties, PropsWithChildren, ReactNode, useEffect, useState} from 'react';
 import styled from "styled-components";
 import {textColor} from "../color";
 
 interface IProps {
   title? : ReactNode,
-
+  style? : CSSProperties,
 }
 
 
-const MyCard : React.FC<PropsWithChildren<IProps>> = ({title, children}) => {
+const MyCard : React.FC<PropsWithChildren<IProps>> = ({title, children, style}) => {
 
   return (
     <>
-      <Con>
+      <Con style={style}>
         <Title>
         {title}
         </Title>

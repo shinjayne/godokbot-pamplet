@@ -35,7 +35,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"/>
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"/>-->
 
     <script src="%PUBLIC_URL%/kakao-sdk.1.37.3.min.js"></script>
 
@@ -60,6 +60,14 @@
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
             font-weight: normal;
             font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NanumSquare';
+            src: url('./NanumSquareR.eot');
+            src: url('./NanumSquareR.eot?#iefix') format('embedded-opentype'),
+            url('./NanumSquareR.woff') format('woff'),
+            url('./NanumSquareR.ttf') format('truetype');
         }
     </style>
     <!--
@@ -93,6 +101,8 @@
   // 사용할 앱의 JavaScript 키를 설정해 주세요.
   Kakao.init('cc5256e943d067f8a95dcc2084b74c0a');
   // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+
+  window.kakao = Kakao;
 
   window.goKakaoChannelTalk = () => {
     Kakao.Channel.chat({
