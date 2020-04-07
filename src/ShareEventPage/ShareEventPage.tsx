@@ -12,17 +12,19 @@ import CustomButton from "../Components/Buttons/CustomButton";
 import styled from "styled-components";
 import {SliderValue} from 'antd/lib/slider';
 
+import misang from './misang.jpg';
+import misangRemove from './misang-remove.png';
+
 
 import {UploadOutlined} from '@ant-design/icons';
 import {ListCard} from "../Components/DisplayGroup/ListPart";
 import {Company, companyImageMap} from "./enum";
 
-import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
-import KakaoButton from "../Components/Buttons/KakaoButton";
-import {FirebaseContainer} from "../index";
 
-import firebase from 'firebase';
+import ResultPage from "./ResultPage";
+import LogoLink from "../LogoLink";
+import useGtag from "../useGtag";
+import firebase from "firebase";
 
 interface IProps {
 }
@@ -31,7 +33,12 @@ interface IProps {
 const ShareEventPage: React.FC<IProps> = () => {
 
 
-  const [userImageUrl, setUserImageUrl] = useState<string | null>(godokProfile);
+  const gtag = useGtag();
+
+  const [goResult, setGoResult] = useState(false);
+
+
+  const [userImageUrl, setUserImageUrl] = useState<string>(godokProfile);
 
   const [name, setName] = useState("취준봇");
   const [engName, setEngName] = useState("Godok Bot");
@@ -48,6 +55,8 @@ const ShareEventPage: React.FC<IProps> = () => {
 
   function onImageChange(params: UploadChangeParam) {
     setUserImageUrl(URL.createObjectURL(params.file.originFileObj));
+
+    gtag('event', 'add_to_cart', {});
   }
 
   function validateImage(file: RcFile) {
@@ -74,152 +83,67 @@ const ShareEventPage: React.FC<IProps> = () => {
   }
 
 
-  function downloadImage() {
+  async function goResultPage() {
+    setGoResult(true);
 
 
-    domtoimage.toJpeg(document.getElementById('result') as Node, {
-      quality: 1,
-      height: 600,
-      width: document.getElementById('result')!.clientWidth,
-      bgcolor: 'white'
-    }).then(
-      function (dataUrl: string) {
-        let link = document.createElement('a');
-        link.download = '사원증.jpeg';
-        link.href = dataUrl;
-        link.click();
-      }
-    );
-
-  }
-
-  function share(imageUrl  : string) {
-
-
-    // @ts-ignore
-    const Kakao  = window['kakao'];
-
-    Kakao.Link.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '고독한 사원증',
-        description: '합격 기원 사원증, 너도 만들어봐!',
-        imageUrl:  imageUrl,
-        link: {
-          mobileWebUrl: 'https://godokbot.web.app/#/share-congrats',
-        },
-      },
-
-      buttons: [
-        {
-          title: '만들러 가기',
-          link: {
-            mobileWebUrl: 'https://godokbot.web.app/#/share-congrats',
-          },
-        },
-      ],
-      success: function(response: any) {
-        console.log('success');
-        console.log(response);
-      },
-      fail: function(error: any) {
-        console.log('error');
-        console.log(error);
-      }
-    });
-
-
-  }
-
-  function onKakao(){
-    const firebaseUrl =  `images/${Number(new Date())}-.${Number(new Date().getMilliseconds())}jpeg`;
-    domtoimage.toBlob(document.getElementById('result') as Node)
-      .then(async function (blob) {
-        const storageRef = firebase.storage().ref();
-        const childRef = storageRef.child(firebaseUrl);
-
-        try {
-          await childRef.put(blob);
-
-          const downloadUrl = await childRef.getDownloadURL();
-
-
-          share(downloadUrl);
-        }catch(e) {
-          console.log(e);
-        }
-
-
-      });
-
-    // @ts-ignore
-    // const Kakao  = window['kakao'];
-    //
-    // console.log(Kakao);
-    // Kakao.API.request({
-    //   url: '/v2/api/talk/memo/default/send',
-    //   data: {
-    //     template_object: {
-    //       object_type: 'feed',
-    //       content: {
-    //         title: '카카오톡 링크 4.0',
-    //         description: '디폴트 템플릿 FEED',
-    //         image_url:
-    //           'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
-    //         link: {
-    //           web_url: 'http://dev.kakao.com',
-    //           mobile_web_url: 'http://dev.kakao.com',
-    //         },
-    //       },
-    //       social: {
-    //         like_count: 100,
-    //         comment_count: 200,
-    //       },
-    //       button_title: '바로 확인',
-    //     },
-    //   },
-    //   success: function(response: any) {
-    //     console.log(response);
-    //   },
-    //   fail: function(error: any) {
-    //     console.log(error);
-    //   },
-    // });
+    gtag('event', 'begin_checkout', {});
   }
 
 
   const ref = useRef<HTMLDivElement>(null);
+
+  if (goResult) {
+    return (
+      <ResultPage company={company} name={name} engName={engName} department={department} grade={grade}
+                  userImageUrl={userImageUrl} size={size} top={top} left={left}/>
+    )
+  }
+
 
   return (
     <>
       <ContentBody>
 
         <DisplayGroup
+          displaySectionStyle={{paddingTop: 15}}
           reversed
           desc={<>
+            <LogoLink/>
             <div
               style={{
                 fontWeight: 1000,
                 fontSize: 30,
-                margin: "0 0 6px 0",
+                margin: "0 0 3px 0",
+
 
                 fontFamily: 'Jalnan',
                 boxSizing: "border-box",
-                width: "fit-content",
+                width: "100%",
                 color: "white",
               }}
             >
               고독한 사원증
             </div>
 
-            {/*<StrongCopy  reversed={true} text={'취준하는 친구에게 사원증을 선물해 보세요!'}/>*/}
-            나만의 합격기원 사원증을 만들어보세요!
+
+            <div style={{width: '100%'}}>
+              나만의 합격기원 사원증을 만들어보세요!
+              <br/>
+              <span style={{fontSize: 11}}> (PC Chrome 환경을 추천합니다)</span>
+            </div>
+
 
             <CustomImage imgSrc={smallMemberCard}/>
 
             <FormItem>
               이름
-              <Input onChange={event => setName(event.target.value)} defaultValue={name}/>
+              <Input onChange={event => {
+                setName(event.target.value);
+                gtag('event', 'start_form', {
+                  'event_category': 'engagement',
+                });
+              }} defaultValue={name}/>
             </FormItem>
             <FormItem>
               영문명
@@ -237,6 +161,14 @@ const ShareEventPage: React.FC<IProps> = () => {
               사원증 사진 등록
               <ListCard>
                 1. 본인이 나온 사진의 배경을 제거합니다.
+
+                <div style={{marginTop: 20, width: '100%', display: "flex", justifyContent: 'center'}}>
+                  <img src={misang} width={80} height={110}/>
+                  <img src={misangRemove} width={80} height={110}/>
+
+
+                </div>
+
                 <CustomButton style={{width: 280}} type={"primary"}
                               onClick={() => window.open("https://www.remove.bg/ko/upload")}>
                   이미지 배경
@@ -289,7 +221,7 @@ const ShareEventPage: React.FC<IProps> = () => {
           <DisplayGroup
             // compact={true}
             displaySectionStyle={{marginBottom: 0}}
-            strongCopy={'당신의 합격을 기원합니다!'}
+            strongCopy={'아래에서 이미지 크기와 위치를 조정 후, 완성하세요!'}
             desc={<>
               <CustomMemberCard id={'result'}>
                 <CustomImage
@@ -338,7 +270,7 @@ const ShareEventPage: React.FC<IProps> = () => {
 
 
             <div style={{display: "flex", width: '100%'}}>
-              <SliderSpan >사이즈</SliderSpan>
+              <SliderSpan>사이즈</SliderSpan>
               <SliderContainer>
                 <Slider
                   min={0}
@@ -352,32 +284,32 @@ const ShareEventPage: React.FC<IProps> = () => {
 
             <div style={{display: "flex", width: '100%'}}>
               <SliderSpan>상하</SliderSpan>
-            <SliderContainer>
-              <Slider
+              <SliderContainer>
+                <Slider
 
-                min={-120}
-                max={120}
-                defaultValue={top}
-                onChange={onTopChange}
-              />
-            </SliderContainer>
-              </div>
+                  min={-120}
+                  max={120}
+                  defaultValue={top}
+                  onChange={onTopChange}
+                />
+              </SliderContainer>
+            </div>
 
             <div style={{display: "flex", width: '100%'}}>
               <SliderSpan>좌우</SliderSpan>
-            <SliderContainer>
-              <Slider
+              <SliderContainer>
+                <Slider
 
-                min={-50}
-                max={50}
-                defaultValue={left}
-                onChange={onLeftChange}
-              />
-            </SliderContainer>
+                  min={-50}
+                  max={50}
+                  defaultValue={left}
+                  onChange={onLeftChange}
+                />
+              </SliderContainer>
             </div>
 
-            <CustomButton onClick={downloadImage}> 내려받기 </CustomButton>
-            <KakaoButton content={'친구에게 공유하기 '} onClick={onKakao}/>
+
+            <CustomButton onClick={goResultPage}> 완성하기 </CustomButton>
           </>}
         />
       </ContentBody>
