@@ -14,6 +14,7 @@ import LogoLink from "../LogoLink";
 import logoText from './logotext.png';
 import useGtag from "../useGtag";
 import StrongCopy from "../Components/StrongCopy";
+import DefaultHelmet from "../Helmet/DefaultHelmet";
 
 interface IProps {
   company: Company,
@@ -83,6 +84,7 @@ const ResultPage: React.FC<IProps> = ({company, name, engName, department, grade
   return (
 
     <>
+      <DefaultHelmet/>
       <ContentBody style={{paddingTop: 10}}>
         <StrongCopy text={'🎉 당신의 합격을 기원합니다!'}/>
         <DescClone>

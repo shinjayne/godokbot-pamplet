@@ -14,15 +14,16 @@ interface IProps {
   imgContainerStyle?: CSSProperties,
   desc?: ReactNode,
 
+  containerStyle? : CSSProperties,
   contents: { title?: ReactNode, imgSrc?: string, body?: ReactNode, key?: number | string }[],
 }
 
 
-const ListDisplayGroup: React.FC<IProps> = ({reverse = false, title, contents, imgNode, imgSrc, imgContainerStyle, desc,}) => {
+const ListDisplayGroup: React.FC<IProps> = ({reverse = false, title, contents, imgNode, imgSrc, imgContainerStyle, desc ,containerStyle,} ) => {
 
   return (
     <>
-      <SliderContainer reverse={String(reverse)}>
+      <SliderContainer reverse={String(reverse)} style={containerStyle}>
         {title && <StrongCopy reversed={reverse} text={title}/>}
         <br/>
 

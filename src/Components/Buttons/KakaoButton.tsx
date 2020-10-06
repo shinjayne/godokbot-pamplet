@@ -7,20 +7,20 @@ interface IProps {
   content?: ReactNode,
   style?: CSSProperties,
   onClick?: () => void,
-  forShare?: boolean,
+  id?: string,
 }
 
 
-const KakaoButton: React.FC<IProps> = ({content = '', style = {}, onClick, forShare = false}) => {
+const KakaoButton: React.FC<IProps> = ({content = '', style = {}, onClick,  id}) => {
 
   return (
-    <CustomButton id={forShare ? 'kakao-link-btn' : ''} onClick={onClick}
+    <CustomButton id={id} onClick={onClick}
                   style={{...style, backgroundColor: '#f7e40d', color: 'black', border: "none", padding: 3}}>
       <img src={KakaoLogo}/>
       {content}
     </CustomButton>
   );
 };
-
+[]
 
 export default KakaoButton;

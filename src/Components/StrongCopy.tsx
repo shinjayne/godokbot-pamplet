@@ -1,4 +1,4 @@
-import React, {ReactChild, ReactChildren, ReactNode, useEffect, useRef, useState} from 'react';
+import React, {CSSProperties, ReactChild, ReactChildren, ReactNode, useEffect, useRef, useState} from 'react';
 import {textColor} from "../color";
 
 interface IProps {
@@ -6,10 +6,11 @@ interface IProps {
   reversed ? :boolean,
   power ? :boolean,
   useZoom? : boolean,
+  style?: CSSProperties,
 }
 
 
-const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false, useZoom=false}) => {
+const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false, useZoom=false, style}) => {
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -45,6 +46,7 @@ const StrongCopy: React.FC<IProps> = ({text, reversed=false, power=false, useZoo
       transitionDelay:'0s',
       transitionDuration:'0.6s',
       transitionProperty:'all',
+      ...style,
     }}>{text}</div>
   );
 };

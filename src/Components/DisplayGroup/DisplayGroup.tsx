@@ -15,6 +15,8 @@ export interface DisplayGroupProps {
   displaySectionStyle?: CSSProperties,
 }
 
+type DisplayGrounType = 'default' | 'reversed' | 'secondary';
+
 
 const DisplayGroup: React.FC<DisplayGroupProps> = ({compact=false, strongCopy, imgSrc, imgNode, desc, reversed=false, imgContainerStyle={}, displaySectionStyle}) => {
 

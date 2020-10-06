@@ -10,7 +10,7 @@ interface IProps {
 }
 
 
-const DisplaySection: React.FC<PropsWithChildren<IProps>> = ({children, reversed, compact= false, style}) => {
+const   DisplaySection: React.FC<PropsWithChildren<IProps>> = ({children, reversed, compact= false, style}) => {
 
   return (
     <>

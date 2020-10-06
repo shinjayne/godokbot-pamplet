@@ -22,6 +22,10 @@ import hynixbi from './hynixbi.jpeg';
 import Element from "react-scroll/modules/components/Element";
 import {scroller} from "react-scroll";
 
+import cjLogo from './cj-logo.svg';
+import Tag from "../Components/Tag";
+import DefaultHelmet from "../Helmet/DefaultHelmet";
+
 
 const Home: React.FC = () => {
 
@@ -65,7 +69,7 @@ const Home: React.FC = () => {
   return (
     <>
 
-
+      <DefaultHelmet/>
       <ContentBody>
         <FixedHeader toggled={toggleButton} title={'고독한 취준봇'} subTitle={'내게 필요한 취준 정보만 쏙쏙'}/>
 
@@ -100,7 +104,7 @@ const Home: React.FC = () => {
                 매일 아침 저녁,<br/> 자소서부터 면접까지! <br/> 취준에 도움이 되는 정보를 골고루 보내드려요
               </div>
               <KakaoButton
-                forShare={true}
+                id={'kakao-link-btn'}
                 style={{width: 300}}
                 content={<>
                   취준하는 친구에게 공유하기
@@ -213,26 +217,28 @@ const Home: React.FC = () => {
               title={'어떤 기업들이 있나요? '}
               contents={[
                 {
-                  title: 'SK하이닉스',
+                  title: 'CJ 제일제당',
                   body: <>
-                    공개채용기간 : 2020년 3월 30일 ~ 2020년 4월 10일
 
-                    <CustomImage imgSrc={hynixbi} useZoom={false} defaultHeight={100}/>
+                    공개채용기간 : 4월 중순 ~ 5월 초 (예상)
 
-                    <CustomButton onClick={goChannel}>
-                      모음집 받아보기 (정보방 마감됨)
+                    <CustomImage imgSrc={cjLogo} useZoom={false} defaultHeight={80}
+                                 style={{marginTop: 20, marginBottom: 20}}/>
+
+                    <CustomButton type={"disabled"} onClick={goChannel}>
+                      제일제당방 참여하기 (준비중)
                     </CustomButton>
                     <CustomButton style={{marginTop: 0}}
-                                  onClick={() => window.open("https://www.skcareers.com/POS/TRM2102.aspx?PosCD=P2003A110002&rURL=/POS/TRM2101.aspx")}>
+                                  onClick={() => window.open("http://recruit.cj.net/")}>
                       공식 공채 공고
                     </CustomButton>
-
-                    (4월 5일 정보방이 마감되었습니다)
                   </>,
-                  key: 'k',
+                  key: 'cjcheil',
                 },
                 {
-                  title: '삼성전자',
+                  title: (<>
+                    삼성전자 <Tag style={{marginLeft : 8}}>마감됨</Tag>
+                  </>),
                   body: <>
 
                     공개채용기간 : 4월 6일 ~ 4월 13일 (지원서 접수)
@@ -240,8 +246,8 @@ const Home: React.FC = () => {
                     <CustomImage imgSrc={samsungbi} useZoom={false} defaultHeight={80}
                                  style={{marginTop: 20, marginBottom: 20}}/>
 
-                    <CustomButton onClick={goChannel}>
-                      삼성전자방 참여하기
+                    <CustomButton type={"disabled"}>
+                      마감되었습니다
                     </CustomButton>
                     <CustomButton style={{marginTop: 0}}
                                   onClick={() => window.open("http://www.samsungcareers.com/rec/apply/ComResumeServlet?cmd=pstMain")}>
@@ -249,6 +255,26 @@ const Home: React.FC = () => {
                     </CustomButton>
                   </>,
                   key: 'kb',
+                },
+
+                {
+                  title: <>SK하이닉스
+                    <Tag style={{marginLeft : 8}}>마감됨</Tag>
+                  </>,
+                  body: <>
+                    공개채용기간 : 2020년 3월 30일 ~ 2020년 4월 10일
+
+                    <CustomImage imgSrc={hynixbi} useZoom={false} defaultHeight={100}/>
+
+                    <CustomButton type={"disabled"}>
+                      마감되었습니다
+                    </CustomButton>
+                    <CustomButton style={{marginTop: 0}}
+                                  onClick={() => window.open("https://www.skcareers.com/POS/TRM2102.aspx?PosCD=P2003A110002&rURL=/POS/TRM2101.aspx")}>
+                      공식 공채 공고
+                    </CustomButton>
+                  </>,
+                  key: 'k',
                 },
                 {
                   title: '취준컨텐츠가 필요한 기업을 알려주세요!',
@@ -269,7 +295,7 @@ const Home: React.FC = () => {
             strongCopy={'함께 취준하는 친구에게 알려주세요 👥 '}
             desc={<>
               <KakaoButton
-                forShare={true}
+                id={'kakao-link-btn'}
                 style={{width: 300}}
                 content={<>
                   취준하는 친구에게 공유하기
@@ -303,7 +329,7 @@ const Home: React.FC = () => {
           <MainActionButton toggled={String(toggleButton)} onClick={scrollToOngoingCompany} href='#'>
             {/*<CustomImage imgSrc={samsungbi} defaultHeight={40}/>*/}
             {/*<CustomImage imgSrc={hynixbi} defaultHeight={40}/>*/}
-             🔴 삼성전자, 하이닉스 진행중! 👇
+             🔴 CJ 제일제당 모집중 👇
           </MainActionButton>
 
         <img style={{

@@ -1,20 +1,21 @@
-import React from 'react';
+import React, {CSSProperties, ReactNode} from 'react';
 import Title from "antd/lib/typography/Title";
 import {primaryColor} from "../../color";
 import styled from "styled-components";
 
 interface IProps {
   toggled?: boolean,
-  title: string,
-  subTitle: string,
+  title: ReactNode,
+  subTitle: ReactNode,
+  style? : CSSProperties,
 }
 
 
-const FixedHeader: React.FC<IProps> = ({toggled = false, title, subTitle}) => {
+const FixedHeader: React.FC<IProps> = ({toggled = false, title, subTitle, style}) => {
 
   return (
     <>
-      <FixedContainer toggled={String(toggled)}>
+      <FixedContainer toggled={String(toggled)} style={style}>
         <div style={{
           fontWeight: 1000,
           fontSize: toggled ? 25 : 30,

@@ -25,6 +25,7 @@ import ResultPage from "./ResultPage";
 import LogoLink from "../LogoLink";
 import useGtag from "../useGtag";
 import firebase from "firebase";
+import DefaultHelmet from "../Helmet/DefaultHelmet";
 
 interface IProps {
 }
@@ -103,6 +104,7 @@ const ShareEventPage: React.FC<IProps> = () => {
 
   return (
     <>
+      <DefaultHelmet/>
       <ContentBody>
 
         <DisplayGroup

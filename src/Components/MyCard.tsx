@@ -51,7 +51,7 @@ const Title = styled.div`
 `;
 
 const BodyPart = styled.div`
-  height: 255px;
+  minHeight: 255px;
   //height: 130px;
   font-size: 13px;
   text-align: center;
